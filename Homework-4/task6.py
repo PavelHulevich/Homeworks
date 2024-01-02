@@ -4,14 +4,13 @@
 # Например, если вводится "[1, 2, 3, 4, 5]", то программа должна вывести "6". Если вводится
 # "[]", то программа должна вывести "0".
 
-Input_Strings = input('Введите список чисел разделенных пробелами: ')
-List_String = Input_Strings.split()
-List_Numbers = map(int, List_String) #преобразуем список строк в мап-список чисел
+input_strings = input('Введите список чисел разделенных пробелами: ')
+list_string = input_strings.split()
+list_numbers = map(int, list_string)  # преобразуем список строк в мап-список чисел
 
-Sum_Even = 0
-for index in List_Numbers:
-    if index%2 == 0:                 #суммируем четные числа списка
-        Sum_Even = Sum_Even + index
+sum_even = 0
+for index in list_numbers:
+    match index % 2:
+        case 0: sum_even += index
 
-
-print('Сумма четных чисел введенного списка: ',Sum_Even)
+print('Сумма четных чисел введенного списка: %s' % sum_even)
