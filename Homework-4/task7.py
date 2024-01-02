@@ -11,7 +11,7 @@ import random
 def pass_generator(pass_length):
     chars = '+-/*!&$#?=@<>abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
     password = ''
-    for _ in range(pass_length):                # первый вариант цикла
+    for _ in range(pass_length):
         password += random.choice(chars)
     return password
 

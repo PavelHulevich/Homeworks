@@ -9,9 +9,9 @@ list_string = input_strings.split()
 list_numbers = map(int, list_string)  # преобразуем список строк в мап-список чисел
 
 sum_even = 0
-for index in list_numbers:
-    match index % 2:
+for num in list_numbers:
+    match num % 2:
         case 0:
-            sum_even += index
+            sum_even += num
 
 print('Сумма четных чисел введенного списка: %s' % sum_even)
