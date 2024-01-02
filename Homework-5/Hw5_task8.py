@@ -18,10 +18,10 @@ text_out = ''
 
 for morze in morze_str_in:                                               # убираем помехи
     if morze == '-' or morze == '.' or morze == ' ':                     # |
-        morze_clear += morze                                # |
+        morze_clear += morze                                             # |
 
 for index in range(0, len(morze_clear), 4):                              # дешифрация
-    text_out += alphabet[morze_clear[index:index + 4]]         # |
+    text_out += alphabet[morze_clear[index:index + 4]]                   # |
 
 print(f'{text_out}')
 print('%s' % text_out)

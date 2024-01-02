@@ -7,19 +7,24 @@
 # [1, 2, 3]
 # ["%", "$", "@"]
 
-FirstList = ["a", "b", "c"]
-SecondList = [1, 2, 3]
-ThirdList = ["%", "$", "@"]
+first_list = ["a", "b", "c"]
+second_list = [1, 2, 3]
+third_list = ["%", "$", "@"]
 
-Zip_of_Tuple = zip(FirstList, SecondList, ThirdList)  # все списки в зип таплов
+zip_of_tuple = zip(first_list, second_list, third_list)  # все списки в зип таплов
 
-# List_of_Tuple = list(Zip_of_Tuple)              # зип таплов в список таплов. Если эту строку запустить,
-                                        # то вывод таплов из зипа (в первом цикле) перестает работать
-                                     # но станет работать второй цикл - вывод таплов из списка
-                                    # Т.е. к таплу в зипе нельзя обратиться, если к зипу применена функция list?
+# list_of_tuple = list(zip_of_tuple)
+# зип таплов в список таплов. Если эту строку запустить,
+# то вывод таплов из зипа (в первом цикле) перестает работать
+# но станет работать второй цикл - вывод таплов из списка
+# Т.е. к таплу в зипе нельзя обратиться, если к зипу применена функция list?
 
-for index in Zip_of_Tuple:
-    print("содерижмое класса zip c таплами: ", index)
+for index in zip_of_tuple:
+    print("содержимое класса zip c таплами: ", index)
 
-# for index in List_of_Tuple:
-#     print("это содерижмое списка таплов: ", index)
+# for index in list_of_tuple:
+#     print("это содержимое списка таплов: ", index)
+
+print(range(9))
+for x in range(10):
+    print(x)

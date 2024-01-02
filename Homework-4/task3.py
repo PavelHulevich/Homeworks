@@ -4,12 +4,12 @@
 # високосный” в противном случае. Функция может принимать значения от 1 до 2024.
 
 def is_leap_year(year):
-    range_year = range(1, 2025)                     #допустимый диапазон годов
-    if year not in range_year:                      #входит ли в диапазон
+    if year not in range(1, 2025):                      # входит ли в диапазон
         return "Год больше 2024 или меньше 1"
-    elif year%4 == 0:
-        return "Высокосный"
+    elif year % 4 == 0:
+        return "Високосный"
     else:
-        return "Невысокосный"
+        return "Невисокосный"
+
 
 print(is_leap_year(2024))

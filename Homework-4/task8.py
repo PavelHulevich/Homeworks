@@ -11,12 +11,10 @@
 
 def check_password(password):
     chars = '!%@#$^&abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
-    if len(password) < 8:
-        return 'Пароль ненадежный. Содержит менее 8 символов'
-    if all(x in chars for x in password):
+    if len(password) >= 8 and all(x in chars for x in password):
         return 'Пароль надежный'
     else:
-        return 'Пароль содержит символы не из списка'
+        return 'Пароль ненадежный'
 
 
 input_password = input('Введите пароль: ')
