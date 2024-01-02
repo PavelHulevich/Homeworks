@@ -11,7 +11,6 @@ list_numbers = map(int, list_string)  # преобразуем список ст
 sum_even = 0
 for num in list_numbers:
     match num % 2:
-        case 0:
-            sum_even += num
+        case 0: sum_even += num
 
 print('Сумма четных чисел введенного списка: %s' % sum_even)

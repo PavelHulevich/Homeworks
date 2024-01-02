@@ -16,7 +16,7 @@ sentences_list = string_in.split('. ')       # список предложени
 sentences_counter = Counter(string_in)       # образуем счетчик символов всего введенного текста
 sent_count_all = sentences_counter['.']      # количество предложений равно количеству точек
 
-for index in range(sent_count_all):          # перебираем предложения
-    words = Counter(sentences_list[index])   # образуем счетчик символов текущего предложения
+for sent_num in range(sent_count_all):          # перебираем предложения
+    words = Counter(sentences_list[sent_num])   # образуем счетчик символов текущего предложения
     word_count = words[' '] + 1              # количество слов = пробелы перед каждым словом + одно первое слово
-    print_result(index + 1, word_count)
+    print_result(sent_num + 1, word_count)

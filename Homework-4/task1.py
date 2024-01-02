@@ -11,8 +11,7 @@ first_list = ["a", "b", "c"]
 second_list = [1, 2, 3]
 third_list = ["%", "$", "@"]
 
-zip_of_tuple = zip(first_list, second_list, third_list)  # все списки в зип таплов
+zip_of_tuples = zip(first_list, second_list, third_list)  # все списки в зип таплов
 
-for index in zip_of_tuple:
+for index in zip_of_tuples:
     print("содержимое класса zip c таплами: ", index)
-

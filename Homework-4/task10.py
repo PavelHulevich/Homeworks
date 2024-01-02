@@ -16,6 +16,7 @@ def check_password(password):                           # проверка на 
 
 def check_chars(string_chars, password):               # проверка все ли символы пароля в одном регистре предлож. списка
     return not all(x in string_chars for x in password)    # True - не все символы в одном регистре предложенного списка
+#   return any(x in string_chars for x in password) <==Заменить на строку что бы пароль имел символы из всех 4-х списков
 
 
 input_password = input('Введите пароль: ')

@@ -27,10 +27,10 @@ def converting_nrzi_binary(string):         # перевод строки с NRZ
 
 
 summ = 0
-for index in NRZI_list_in:                  # перебираем список строк с NRZI-кодом
-    binary = converting_nrzi_binary(index)  # перевод текущей строки в двоичный вид
+for nrzi_cur in NRZI_list_in:                  # перебираем список строк с NRZI-кодом
+    binary = converting_nrzi_binary(nrzi_cur)  # перевод текущей строки в двоичный вид
     summ = summ + int(binary, 2)            # суммируем содержимое кодов
-    print(f'NRZI-код:  {index:<20}  соответствует двоичному: 0b{binary:>016}   /   десятичному:  {int(binary, 2):<6}')
+    print(f'NRZI-код:  {nrzi_cur:<20} соответствует двоичному: 0b{binary:>016} / десятичному:  {int(binary, 2):<6}')
 
 print(f'Сумма чисел переданных кодами: {summ}')
 print('Сумма чисел переданных кодами: %s' % summ)

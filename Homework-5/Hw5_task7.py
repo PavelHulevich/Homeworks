@@ -17,7 +17,7 @@ string_in = 'ТЕСТОВОЕ СООБЩЕНИЕ'
 morze_out = ''
 
 for index in string_in:  # перебираем символы в строке
-    if index != ' ':  # убираем пробелы
+    if index != ' ':     # убираем пробелы
         morze_out += alphabet_rev[index]  # формируем строку с кодом морзе
 
 print(f'{string_in} ==>  "{morze_out}"')

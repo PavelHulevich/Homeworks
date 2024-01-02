@@ -10,4 +10,3 @@ string_list = string_in.split(' ')
 print(f'{string_list[4]} {string_list[3]}. {" ".join(string_list[:3])[:-1]}. {string_list[5]}.')
 print('%s %s. %s. %s.' % (string_list[4], string_list[3], " ".join(string_list[:3])[:-1], string_list[5]))
 print('{} {}. {}. {}.'.format(string_list[4], string_list[3], " ".join(string_list[:3])[:-1], string_list[5]))
-
