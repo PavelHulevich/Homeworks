@@ -9,14 +9,15 @@
 # • пароль может состоять только лишь из букв в верхнем регистре, букв в нижнем
 # регистре, цифр и специальных символов
 
-def check_password(Password):
+def check_password(password):
     chars = '!%@#$^&abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
-    if len(Password) < 8:
-        return 'Пароль ненадежный'
-    if all(x in chars for x in Password):
+    if len(password) < 8:
+        return 'Пароль ненадежный. Содержит менее 8 символов'
+    if all(x in chars for x in password):
         return 'Пароль надежный'
     else:
         return 'Пароль содержит символы не из списка'
 
-Input_Password = input('Введите пароль: ')
-print(check_password(Input_Password))
+
+input_password = input('Введите пароль: ')
+print(check_password(input_password))

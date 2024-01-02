@@ -6,12 +6,12 @@
 # Функция принимает в качестве аргумента длинну пароля и возвращает строку с паролем.
 
 import random
-def pass_generator(Pass_Length):
+def pass_generator(pass_length):
     chars = '+-/*!&$#?=@<>abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
-    Password = ''
-    for index in range(Pass_Length):                # первый вариант цикла
-        Password = Password + random.choice(chars)
-    return Password
+    password = ''
+    for i in range(pass_length):                # первый вариант цикла
+        password += random.choice(chars)
+    return password
 
 # def pass_generator(Pass_Length):
 #     chars = '+-/*!&$#?=@<>abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'

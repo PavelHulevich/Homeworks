@@ -3,30 +3,32 @@
 # лишь из букв в верхнем регистре, букв в нижнем регистре, цифр и специальных символов.
 
 chars = '!%@#$^&abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
-Uper_Chars = range('A', 'Z') #'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-Lower_Chars = 'abcdefghijklnopqrstuvwxyz'
-Digit_Chars = '1234567890'
-Spec_Chars = '!%@#$^&'
-def check_password(Password):                           # проверка на длину пароля и на соотвествие списку chars
-    if len(Password) < 8:
+upper_chars = range('A', 'Z')     # 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+lower_chars = range('a', 'z')    # 'abcdefghijklnopqrstuvwxyz'
+digit_chars = range(9)           # '1234567890'
+spec_chars = '!%@#$^&'
+test_list = (upper_chars, lower_chars, digit_chars, spec_chars)  # список из строк символов разных регистров для теста
+
+
+def check_password(password):                           # проверка на длину пароля и на соответствие списку chars
+    if len(password) < 8:
         return 'Пароль ненадежный, содержит менее восьми символов'
-    if all(x in chars for x in Password):
+    if all(x in chars for x in password):
         return 'Пароль содержит 8 или более символов из списка'
     else:
         return 'Пароль содержит символы не из списка'
 
-def check_chars(String_Chars, Password):               # проверка все ли символы пароля в одном регистре
-    return all(x in String_Chars for x in Password)    # True - все символы в одном регистре предложенного списка
+
+def check_chars(string_chars, password):               # проверка все ли символы пароля в одном регистре предлож. списка
+    return all(x in string_chars for x in password)    # True - все символы в одном регистре предложенного списка
+
 
 Input_Password = input('Введите пароль: ')
-print(check_password(Input_Password))                   # проверка на соответствие условиям задичи 8
-
-Test_Uper = check_chars(Uper_Chars, Input_Password)         # все ли в высоком регистре
-Test_Lower = check_chars(Lower_Chars, Input_Password)       # все ли в низком регистре
-Test_Digit = check_chars(Digit_Chars, Input_Password)       # все ли цифры
-Test_Spec = check_chars(Spec_Chars, Input_Password)         # все ли спецсимволы
-
-if Test_Spec or Test_Digit or Test_Uper or Test_Lower:
-    print('Пароль ненадежный, состоит из символов одного регистра')
+print(check_password(Input_Password))                   # проверка на длину пароля и на соответствие списку chars
+test = True
+for test_chars in test_list:                        # перебираем список тестовых строк (с символами разных регистров)
+    test = test and check_chars(test_chars, input_password)  # проверка все ли символы пароля в одном регистр
+if test:
+    print('Пароль состоит из символов разных регистров')
 else:
-    print('Пароль надежный, состоит из символов разных регистров')
+    print('Пароль ненадежный, состоит из символов одного регистров')
