@@ -13,18 +13,6 @@ third_list = ["%", "$", "@"]
 
 zip_of_tuple = zip(first_list, second_list, third_list)  # все списки в зип таплов
 
-# list_of_tuple = list(zip_of_tuple)
-# зип таплов в список таплов. Если эту строку запустить,
-# то вывод таплов из зипа (в первом цикле) перестает работать
-# но станет работать второй цикл - вывод таплов из списка
-# Т.е. к таплу в зипе нельзя обратиться, если к зипу применена функция list?
-
 for index in zip_of_tuple:
     print("содержимое класса zip c таплами: ", index)
 
-# for index in list_of_tuple:
-#     print("это содержимое списка таплов: ", index)
-
-print(range(9))
-for x in range(10):
-    print(x)
