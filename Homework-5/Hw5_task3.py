@@ -16,7 +16,7 @@ string_in = ('Python is an easy to learn language. It has many applications in v
              'You can use it for web development, data analysis, machine learning, and more.')
 sentences_list = string_in.split('. ')                   # Список предложений из строки
 for sentences in sentences_list:                         # Перебираем все предложения из списка предложений
-    sent_number = sentences_list.index(sentences) + 1     # Порядковый номер текущего предложения
+    sent_number = sentences_list.index(sentences) + 1    # Порядковый номер текущего предложения
     word_list = sentences.split(' ')                     # Список слов из текущего предложения
     word_count = len(word_list)                          # Количество слов в текущем предложении
     print_result(sent_number, word_count)
