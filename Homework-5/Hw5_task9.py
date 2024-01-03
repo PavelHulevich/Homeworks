@@ -6,14 +6,15 @@
 # вывести 3 отформатированные строки.
 # Символы |¯ и |_ соответствуют 1, а _ и ¯ соответствуют 0.
 
-NRZI_list_in = [
+nrzi_list_in = [
     '|¯¯|_|¯¯¯¯¯|_|¯|_',
     '|¯¯¯¯¯¯|___|¯|___|¯',
     '|¯|_|¯|______|¯¯|_',
     '|¯|__|¯¯|___|¯|__|¯']                  # список строк с NRZI-кодом
 
 
-def converting_nrzi_binary(string):         # перевод строки с NRZI-кодом в двоичный код текстом без '0b'
+def converting_nrzi_to_binary(string):
+    # перевод строки с NRZI-кодом в двоичный код текстом без '0b'
     binary_out = ''
     index_char = 0
     while index_char < len(string):
@@ -26,11 +27,15 @@ def converting_nrzi_binary(string):         # перевод строки с NRZ
     return binary_out
 
 
+def printing_formatted_results(nrzi, binary):
+    print(f'NRZI-код:  {nrzi:<20} соответствует двоичному: 0b{binary:>016} / десятичному:  {int(binary, 2):<6}')
+
+
 summ = 0
-for nrzi_cur in NRZI_list_in:                  # перебираем список строк с NRZI-кодом
-    binary = converting_nrzi_binary(nrzi_cur)  # перевод текущей строки в двоичный вид
-    summ = summ + int(binary, 2)            # суммируем содержимое кодов
-    print(f'NRZI-код:  {nrzi_cur:<20} соответствует двоичному: 0b{binary:>016} / десятичному:  {int(binary, 2):<6}')
+for nrzi_current in nrzi_list_in:                             # перебираем строки с NRZI-кодом в списке с кодами
+    binary_current = converting_nrzi_to_binary(nrzi_current)  # перевод текущей строки в двоичный вид
+    summ = summ + int(binary_current, 2)                      # суммируем содержимое кодов
+    printing_formatted_results(nrzi_current, binary_current)
 
 print(f'Сумма чисел переданных кодами: {summ}')
 print('Сумма чисел переданных кодами: %s' % summ)

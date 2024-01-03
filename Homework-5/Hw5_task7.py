@@ -16,9 +16,9 @@ for key, value in alphabet.items():  # Генерация обратного с�
 string_in = 'ТЕСТОВОЕ СООБЩЕНИЕ'
 morze_out = ''
 
-for index in string_in:  # перебираем символы в строке
-    if index != ' ':     # убираем пробелы
-        morze_out += alphabet_rev[index]  # формируем строку с кодом морзе
+for char in string_in:  # перебираем символы в строке
+    if char != ' ':     # убираем пробелы
+        morze_out += alphabet_rev[char]  # формируем строку с кодом морзе
 
 print(f'{string_in} ==>  "{morze_out}"')
 print('%s ==>  "%s"' % (string_in, morze_out))

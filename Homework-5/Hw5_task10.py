@@ -8,26 +8,35 @@
 # вход подана строка "lady", то на выходе должна быть строка "ladies". В остальных случаях
 # просто добавьте s.
 
-string_in = 'lady'
+# def add_plural_ending(word):
+# # Вариант с сечением строк
+#     if word[-1:] in ['s', 'x', 'z'] or word[-2:] in ['ch', 'dh']:
+#         return word + 'es'
+#     elif word[-1:] == 'y' and word[-2:-1] in consonants_list:         # если в конце слова 'y' после согласной
+#         return word[:-1] + 'ies'
+#     else:
+#         return word + 's'
+
+
+def add_plural_ending(word):
+    # Вариант с анализом конца строки
+    if word.endswith(('s', 'x', 'z')) or word.endswith(('ch', 'dh')):
+        return word + 'es'
+    elif word.endswith('y') and word[-2:-1] in consonants_list:      # если в конце слова 'y' после согласной
+        return word[:-1] + 'ies'
+    else:
+        return word + 's'
+
+
+def printing_formatted_results(str_in, str_out):
+    print(f'Вывод форматированием f-строкой:      {str_in} ==> {str_out}')
+    print('Вывод форматированием '+chr(37)+'-способом:     %s ==> %s' % (str_in, str_out))
+    print('Вывод форматированием через.format:   {} ==> {}'.format(str_in, str_out))
+
+
 consonants = 'b, c, d, f, g, h, j, k, l, m, n, p, q, r, s, t, v, w, x, z'  # согласные
 consonants_list = consonants.split(', ')                                   # в список без запятых
 
-# Вариант с сечением строк
-# if string_in[-1:] in ['s', 'x', 'z'] or string_in[-2:] in ['ch', 'dh']:
-#     string_out = string_in + 'es'
-# elif string_in[-1:] == 'y' and string_in[-2:-1] in consonants_list:         # если в конце слова 'y' после согласной
-#     string_out = string_in[:-1] + 'ies'
-# else:
-#     string_out = string_in + 's'
-
-# Вариант с анализом конца строки
-if string_in.endswith(('s', 'x', 'z')) or string_in.endswith(('ch', 'dh')):
-    string_out = string_in + 'es'
-elif string_in.endswith('y') and string_in[-2:-1] in consonants_list:      # если в конце слова 'y' после согласной
-    string_out = string_in[:-1] + 'ies'
-else:
-    string_out = string_in + 's'
-
-print(f'Вывод форматированием f-строкой:      {string_in} ==> {string_out}')
-print('Вывод форматированием '+chr(37)+'-способом:     %s ==> %s' % (string_in, string_out))
-print('Вывод форматированием через .format:  {} ==> {}' .format(string_in, string_out))
+string_in = 'lady'
+string_out = add_plural_ending(string_in)
+printing_formatted_results(string_in, string_out)
