@@ -17,4 +17,4 @@ sentences_quantity = Counter(string_in)['.']       # количество пре
 
 for sentence_number in range(sentences_quantity):     # перебираем предложения
     words_counter = Counter(sentences_list[sentence_number])[' '] + 1  # количество слов = пробелы перед каждым
-    printing_formatted_results(sentence_number + 1, words_counter)         # словом + одно первое слово
+    printing_formatted_results(sentence_number + 1, words_counter)     # словом + одно первое слово

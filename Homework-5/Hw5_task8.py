@@ -19,8 +19,8 @@ for morze in morze_str_in:                                               # уб�
     if morze == '-' or morze == '.' or morze == ' ':                     # |
         morze_clear += morze                                             # |
 
-for index in range(0, len(morze_clear), 4):                              # дешифрация
-    text_out += alphabet[morze_clear[index:index + 4]]                   # |
+for morze_pointer in range(0, len(morze_clear), 4):                              # дешифрация
+    text_out += alphabet[morze_clear[morze_pointer:morze_pointer + 4]]           # |
 
 print(f'{text_out}')
 print('%s' % text_out)
