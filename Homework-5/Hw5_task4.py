@@ -5,8 +5,12 @@
 # мир. 1869." Программа должна использовать 3 метода форматирования (f-strings, % и format)
 # вывести 3 отформатированные строки.
 
+def print_formatted_text(string):
+    string_list = string.split(' ')
+    print(f'{string_list[4]} {string_list[3]}. {" ".join(string_list[:3])[:-1]}. {string_list[5]}.')
+    print('%s %s. %s. %s.' % (string_list[4], string_list[3], " ".join(string_list[:3])[:-1], string_list[5]))
+    print('{} {}. {}. {}.'.format(string_list[4], string_list[3], " ".join(string_list[:3])[:-1], string_list[5]))
+
+
 string_in = 'Война и мир, Лев Толстой, 1869'
-string_list = string_in.split(' ')
-print(f'{string_list[4]} {string_list[3]}. {" ".join(string_list[:3])[:-1]}. {string_list[5]}.')
-print('%s %s. %s. %s.' % (string_list[4], string_list[3], " ".join(string_list[:3])[:-1], string_list[5]))
-print('{} {}. {}. {}.'.format(string_list[4], string_list[3], " ".join(string_list[:3])[:-1], string_list[5]))
+print_formatted_text(string_in)

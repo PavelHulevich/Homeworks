@@ -6,12 +6,14 @@
 # использовать 3 метода форматирования (f-strings, % и format) вывести 3 отформатированные
 # строки.
 
-tel_in = '80299098425'
+def print_telephone_number(telephone):
+    print(f'+375 ({telephone[2:4]}) {telephone[4:7]}-{telephone[7:9]}-{telephone[9:]}')
+    print('+375 (%s) %s-%s-%s' % (telephone[2:4], telephone[4:7], telephone[7:9], telephone[9:]))
+    print('+375 ({}) {}-{}-{}'.format(telephone[2:4], telephone[4:7], telephone[7:9], telephone[9:]))
 
-print(f'+375 ({tel_in[2:4]}) {tel_in[4:7]}-{tel_in[7:9]}-{tel_in[9:]}')
-print('+375 (%s) %s-%s-%s' % (tel_in[2:4], tel_in[4:7], tel_in[7:9], tel_in[9:]))
-print('+375 ({}) {}-{}-{}'.format(tel_in[2:4], tel_in[4:7], tel_in[7:9], tel_in[9:]))
+    # еще один вариант вывода списка
+    telephone_list = telephone[2:4], telephone[4:7], telephone[7:9], telephone[9:]
+    print('+375 (%s) %s-%s-%s' % telephone_list)
 
-# еще один вариант вывода списка
-tel_list = tel_in[2:4], tel_in[4:7], tel_in[7:9], tel_in[9:]
-print('+375 (%s) %s-%s-%s' % tel_list)
+telephone_in = '80299098425'
+print_telephone_number(telephone_in)

@@ -6,11 +6,13 @@
 # Программа должна использовать 3 метода форматирования (f-strings, % и format) вывести 3
 # отформатированные строки.
 
+def print_formatted_number(number):
+    print('Decimal: %(point)03d, Octal: %(point)#05o, Hexadecimal: %(point)#04x' % {'point': number})
+    print('Decimal: {0:03d}, Octal: 0o{0:03o}, Hexadecimal: 0x{0:02x}, Binary: 0b{0:08b}'.format(number))
+    print(f'Decimal: {number:03d}, Octal: 0o{number:03o}, Hexadecimal: 0x{number:02x}, '
+          f'Binary: 0b{number:08b}')
+
+
 binary_string_in = "101010"
 decimal_in = int(binary_string_in, 2)   # в целое число по основанию 2
-
-                                        # для %-форматирования двоичный вывод не предусмотрен
-print('Decimal: %(point)03d, Octal: %(point)#05o, Hexadecimal: %(point)#04x' % {'point': decimal_in})
-print('Decimal: {0:03d}, Octal: 0o{0:03o}, Hexadecimal: 0x{0:02x}, Binary: 0b{0:08b}'.format(decimal_in))
-print(f'Decimal: {decimal_in:03d}, Octal: 0o{decimal_in:03o}, Hexadecimal: 0x{decimal_in:02x}, '
-      f'Binary: 0b{decimal_in:08b}')
+print_formatted_number(decimal_in)

@@ -21,11 +21,12 @@
 def add_plural_ending(word):
     # Вариант с анализом конца строки
     if word.endswith(('s', 'x', 'z')) or word.endswith(('ch', 'dh')):
-        return word + 'es'
+        word += 'es'
     elif word.endswith('y') and word[-2:-1] in consonants_list:      # если в конце слова 'y' после согласной
-        return word[:-1] + 'ies'
+        word = word[:-1] + 'ies'
     else:
-        return word + 's'
+        word += 's'
+    return word
 
 
 def printing_formatted_results(str_in, str_out):
@@ -38,5 +39,5 @@ consonants = 'b, c, d, f, g, h, j, k, l, m, n, p, q, r, s, t, v, w, x, z'  # с�
 consonants_list = consonants.split(', ')                                   # в список без запятых
 
 string_in = 'lady'
-string_out = add_plural_ending(string_in)
-printing_formatted_results(string_in, string_out)
+string_plural = add_plural_ending(string_in)
+printing_formatted_results(string_in, string_plural)

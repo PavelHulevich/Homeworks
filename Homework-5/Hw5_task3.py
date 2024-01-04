@@ -6,7 +6,7 @@
 # Sentence 2 has 7 words. Sentence 3 has 13 words.". Программа должна использовать 3 метода форматирования (fstrings,
 # % и format) вывести 3 отформатированные строки.
 
-def print_result(sent_nmb, word_cnt):  # Вывод номера предложения и количества слов в нем
+def print_quantity_words(sent_nmb, word_cnt):  # Вывод номера предложения и количества слов в нем
     print(f'Вывод форматированием f-строкой:    Sentence {sent_nmb} has {word_cnt} words.')
     print('Вывод форматированием ' + chr(37) + '-способом:   Sentence %s has %s words' % (sent_nmb, word_cnt))
     print('Вывод форматированием через format: Sentence {} has {} words\n'.format(sent_nmb, word_cnt))
@@ -19,4 +19,4 @@ for sentence in sentences_list:                         # Перебираем �
     sentence_number = sentences_list.index(sentence) + 1    # Порядковый номер текущего предложения
     words_list = sentence.split(' ')                     # Список слов из текущего предложения
     words_count = len(words_list)                          # Количество слов в текущем предложении
-    print_result(sentence_number, words_count)
+    print_quantity_words(sentence_number, words_count)

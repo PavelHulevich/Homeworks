@@ -13,8 +13,8 @@ def printing_formatted_results(sent_nbr, word_cnt):
 string_in = ('Python is an easy to learn language. It has many applications in various fields. '
              'You can use it for web development, data analysis, machine learning, and more.')
 sentences_list = string_in.split('. ')             # список предложений из строки
-sentences_quantity = Counter(string_in)['.']       # количество предложений равно количеству точек
 
-for sentence_number in range(sentences_quantity):     # перебираем предложения
-    words_counter = Counter(sentences_list[sentence_number])[' '] + 1  # количество слов = пробелы перед каждым
-    printing_formatted_results(sentence_number + 1, words_counter)     # словом + одно первое слово
+for sentence in sentences_list:
+    words_counter = Counter(sentence)[' '] + 1
+    sentence_number = sentences_list.index(sentence) + 1
+    printing_formatted_results(sentence_number, words_counter)

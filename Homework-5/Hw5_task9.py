@@ -13,18 +13,18 @@ nrzi_list_in = [
     '|¯|__|¯¯|___|¯|__|¯']                  # список строк с NRZI-кодом
 
 
-def converting_nrzi_to_binary(string):
+def converting_nrzi_to_binary(nrzi):
     # перевод строки с NRZI-кодом в двоичный код текстом без '0b'
-    binary_out = ''
+    binary = ''
     index_char = 0
-    while index_char < len(string):
-        if string[index_char] == '|':
-            binary_out += '1'
+    while index_char < len(nrzi):
+        if nrzi[index_char] == '|':
+            binary += '1'
             index_char += 2
         else:
-            binary_out += '0'
+            binary += '0'
             index_char += 1
-    return binary_out
+    return binary
 
 
 def printing_formatted_results(nrzi, binary):
