@@ -9,9 +9,6 @@ alphabet = {
     '----': 'Ш', '--.-': 'Щ', '-. -': 'Ъ', '-.--': 'Ы',
     '-..-': 'Ь', '. -.': 'Э', '..--': 'Ю', '.-.-': 'Я',
 }
-alphabet_rev = {}  # Обратный словарь
-for key, value in alphabet.items():  # Генерация обратного словаря
-    alphabet_rev[value] = key
 
 
 def converting_string_to_morze(string):
@@ -21,6 +18,10 @@ def converting_string_to_morze(string):
             morze += alphabet_rev[char]  # формируем строку с кодом морзе
     return morze
 
+
+alphabet_rev = {}                    # Обратный словарь
+for key, value in alphabet.items():  # Генерация обратного словаря
+    alphabet_rev[value] = key
 
 string_in = 'ТЕСТОВОЕ СООБЩЕНИЕ'
 morze_out = converting_string_to_morze(string_in)

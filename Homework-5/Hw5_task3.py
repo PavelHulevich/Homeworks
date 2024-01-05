@@ -14,9 +14,9 @@ def print_quantity_words(sent_nmb, word_cnt):  # Вывод номера пре�
 
 string_in = ('Python is an easy to learn language. It has many applications in various fields. '
              'You can use it for web development, data analysis, machine learning, and more.')
-sentences_list = string_in.split('. ')                   # Список предложений из строки
-for sentence in sentences_list:                         # Перебираем все предложения из списка предложений
-    sentence_number = sentences_list.index(sentence) + 1    # Порядковый номер текущего предложения
-    words_list = sentence.split(' ')                     # Список слов из текущего предложения
-    words_count = len(words_list)                          # Количество слов в текущем предложении
+sentences_list = string_in.split('. ')                    # Список предложений из строки
+for sentence in sentences_list:                           # Перебираем все предложения из списка предложений
+    sentence_number = sentences_list.index(sentence) + 1  # Порядковый номер текущего предложения
+    words_list = sentence.split(' ')                      # Список слов из текущего предложения
+    words_count = len(words_list)                         # Количество слов в текущем предложении
     print_quantity_words(sentence_number, words_count)
