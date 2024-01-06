@@ -7,7 +7,7 @@ upper_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 lower_chars = 'abcdefghijklnopqrstuvwxyz'
 digit_chars = '1234567890'
 spec_chars = '!%@#$^&'
-test_list = (upper_chars, lower_chars, digit_chars, spec_chars)  # список из строк символов разных регистров для теста
+test_list = [upper_chars, lower_chars, digit_chars, spec_chars]  # список из строк символов разных регистров для теста
 
 input_password = 'Aa1!'
 
@@ -21,7 +21,7 @@ else:
 
 # is_pass_safe = True
 # for test_chars in test_list:
-#     is_pass_safe *= not all(x in test_chars for x in input_password)
+#     is_pass_safe *= not all(x in test_chars for x in input_password) # все символы пароля в любом одном регистре
 # if is_pass_safe:
 #     print('Пароль не содержит символы только из одного набора символов')
 # else:
