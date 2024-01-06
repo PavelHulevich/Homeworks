@@ -8,6 +8,7 @@
 
 def print_formatted_number(number):
     print('Decimal: %(point)03d, Octal: %(point)#05o, Hexadecimal: %(point)#04x' % {'point': number})
+        #  форматирование вывода через % - не поддерживает Binary (нельзя сделать %(point)#10b )
     print('Decimal: {0:03d}, Octal: 0o{0:03o}, Hexadecimal: 0x{0:02x}, Binary: 0b{0:08b}'.format(number))
     print(f'Decimal: {number:03d}, Octal: 0o{number:03o}, Hexadecimal: 0x{number:02x}, '
           f'Binary: 0b{number:08b}')

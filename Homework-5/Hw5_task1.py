@@ -15,5 +15,6 @@ def print_telephone_number(telephone):
     telephone_list = telephone[2:4], telephone[4:7], telephone[7:9], telephone[9:]
     print('+375 (%s) %s-%s-%s' % telephone_list)
 
+
 telephone_in = '80299098425'
 print_telephone_number(telephone_in)

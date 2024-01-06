@@ -26,16 +26,16 @@ def coding_string(string, step):  # Шифрование
 
 def decoding_string(string, step):  # Дешифрование
     string_out = ''
-    for char in string:  # перебираем все символы во введенной строке
-        if char == ' ':  # если символ ' ' то оставляем пробел в том же месте
-            string_out += ' '  # |
+    for char in string:         # перебираем все символы во введенной строке
+        if char == ' ':         # если символ ' ' то оставляем пробел в том же месте
+            string_out += ' '       # |
         else:
-            char_index = alphabet.find(char)  # индекс текущего символа в алфавите
-            char_index -= step  # индекс символа меняется на шаг обратный шагу кодирования
-            if char_index > 25:  # контроль выхода индекса за границы алфавита
-                char_index -= 26  # |
-            elif char_index < 0:  # |
-                char_index += 26  # |
+            char_index = alphabet.find(char)    # индекс текущего символа в алфавите
+            char_index -= step                  # индекс символа меняется на шаг обратный шагу кодирования
+            if char_index > 25:                 # контроль выхода индекса за границы алфавита
+                char_index -= 26                       # |
+            elif char_index < 0:                       # |
+                char_index += 26                       # |
             string_out += alphabet[char_index]  # Выходная строка формируется
     return string_out
 
