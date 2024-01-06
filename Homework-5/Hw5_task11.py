@@ -7,7 +7,7 @@ from collections import Counter
 def printing_formatted_results(sent_nbr, word_cnt):
     print(f'Вывод форматированием f-строкой:      Sentence {sent_nbr} has {word_cnt:2} words.')
     print('Вывод форматированием %s-способом:     Sentence %s has %2s words' % (chr(37), sent_nbr, word_cnt))
-    print('Вывод форматированием через .format:  Sentence {} has {:2} words'.format(sent_nbr, word_cnt))
+    print('Вывод форматированием через .format:  Sentence {} has {:2} words\n'.format(sent_nbr, word_cnt))
 
 
 string_in = ('Python is an easy to learn language. It has many applications in various fields. '
