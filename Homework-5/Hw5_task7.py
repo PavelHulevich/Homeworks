@@ -1,5 +1,5 @@
 # Hw5_task7.py
-alphabet = {
+ALPHABET = {
     '.-  ': 'А', '-...': 'Б', '.-- ': 'В', '--. ': 'Г',
     '-.. ': 'Д', '.   ': 'Е', '...-': 'Ж', '--..': 'З',
     '..  ': 'И', '.---': 'Й', '-.- ': 'К', '.-..': 'Л',
@@ -20,7 +20,7 @@ def converting_string_to_morze(string):
 
 
 alphabet_rev = {}                    # Обратный словарь
-for key, value in alphabet.items():  # Генерация обратного словаря
+for key, value in ALPHABET.items():  # Генерация обратного словаря
     alphabet_rev[value] = key
 
 string_in = 'ТЕСТОВОЕ СООБЩЕНИЕ'
