@@ -18,11 +18,11 @@
 #         return word + 's'
 
 
-def add_plural_ending(word):
+def addition_plural_ending(word):
     # Вариант с анализом конца строки
     if word.endswith(('s', 'x', 'z')) or word.endswith(('ch', 'dh')):
         word += 'es'
-    elif word.endswith('y') and word[-2:-1] in consonants_list:      # если в конце слова 'y' после согласной
+    elif word.endswith('y') and word[-2:-1] in consonants_list:  # если в конце слова 'y' после согласной
         word = word[:-1] + 'ies'
     else:
         word += 's'
@@ -31,13 +31,13 @@ def add_plural_ending(word):
 
 def printing_formatted_results(str_in, str_out):
     print(f'Вывод форматированием f-строкой:      {str_in} ==> {str_out}')
-    print('Вывод форматированием '+chr(37)+'-способом:     %s ==> %s' % (str_in, str_out))
+    print('Вывод форматированием ' + chr(37) + '-способом:     %s ==> %s' % (str_in, str_out))
     print('Вывод форматированием через.format:   {} ==> {}'.format(str_in, str_out))
 
 
-consonants = 'b, c, d, f, g, h, j, k, l, m, n, p, q, r, s, t, v, w, x, z'  # согласные
-consonants_list = consonants.split(', ')                                   # в список без запятых
+CONSONANTS = 'b, c, d, f, g, h, j, k, l, m, n, p, q, r, s, t, v, w, x, z'  # согласные
+consonants_list = CONSONANTS.split(', ')  # в список без запятых
 
 string_in = 'lady'
-string_plural = add_plural_ending(string_in)
+string_plural = addition_plural_ending(string_in)
 printing_formatted_results(string_in, string_plural)
