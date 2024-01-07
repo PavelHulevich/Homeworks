@@ -6,6 +6,7 @@
 # заменяется буквой с фиксированным числом позиций вниз по алфавиту
 
 ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'  # 26 символов
+alphabet_len = len(ALPHABET)
 
 
 def coding_caesar(string, step):  # Шифрование
@@ -16,10 +17,10 @@ def coding_caesar(string, step):  # Шифрование
         else:
             char_index = ALPHABET.find(char)    # индекс текущего символа в алфавите
             char_index += step                  # индекс символа меняется на шаг кодирования
-            if char_index > 25:                 # контроль выхода индекса за границы алфавита
-                char_index -= 26                    # |
-            elif char_index < 0:                    # |
-                char_index += 26                    # |
+            if char_index > alphabet_len - 1:                 # контроль выхода индекса за границы алфавита
+                char_index -= alphabet_len                    # |
+            elif char_index < 0:                              # |
+                char_index += alphabet_len                    # |
             string_out += ALPHABET[char_index]  # Выходная строка формируется
     return string_out
 
@@ -32,10 +33,10 @@ def decoding_caesar(string, step):  # Дешифрование
         else:
             char_index = ALPHABET.find(char)    # индекс текущего символа в алфавите
             char_index -= step                  # индекс символа меняется на шаг обратный шагу кодирования
-            if char_index > 25:                 # контроль выхода индекса за границы алфавита
-                char_index -= 26                       # |
+            if char_index > alphabet_len - 1:                 # контроль выхода индекса за границы алфавита
+                char_index -= alphabet_len                       # |
             elif char_index < 0:                       # |
-                char_index += 26                       # |
+                char_index += alphabet_len                       # |
             string_out += ALPHABET[char_index]  # Выходная строка формируется
     return string_out
 
