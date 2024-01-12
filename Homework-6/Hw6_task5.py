@@ -8,7 +8,8 @@
 """
 
 
-def swap(list):
+def transpose_2dim_list(list):
+    # Транспонирование списка
     size = len(list)
     b = [[0] * size for _ in range(size)]
     for i in range(3):
@@ -18,6 +19,7 @@ def swap(list):
 
 
 def checking_input_data(two_dim_list):
+    # Проверяет аргумент, на соответствие требованиям. 0 - если нет ошибки, иначе - код ошибки
     if not isinstance(two_dim_list, list):
         print("На входе не список")
         return 0b0001
@@ -30,18 +32,22 @@ def checking_input_data(two_dim_list):
             return 0b0100
         for j in i:
             if not isinstance(j, (int, float)):
-                print('Элементы списка не являются числом')
+                print('В элементах списка содержится не число')
                 return 0b1000
     return 0
 
 
-def swap_rows_and_columns(two_dim_list):
+def transpose_2dim_list_entrance(two_dim_list):
+    # Проверяем валидность входных данных. Если данные не соответствуют - передаем на выход код ошибки
+    # Иначе - выполняем транспонирование и передаем на выход результирующей список.
     check_result = checking_input_data(two_dim_list)
     if check_result != 0:
         return check_result
     else:
-        return swap(two_dim_list)
+        return transpose_2dim_list(two_dim_list)
 
 
-
+list_in = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+list_out = transpose_2dim_list_entrance(list_in)
+print(f'{list_in}\n{list_out}')
 
