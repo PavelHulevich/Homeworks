@@ -39,8 +39,9 @@ def find_max_common_multiplier(first_number, second_number):
     else:
         return 0
 
+
 # Test example
 test_arguments = [[25, 5], [14.3, 28], [-1, 20], ['d', 6], [25, 0], [[5, 2, 3], 2]]
 for i in test_arguments:
-    print(i[0], i[1])
-    print(find_max_common_multiplier(i[0], i[1]))
+    print(f'Число 1: {i[0]},  Число 2: {i[1]}')
+    print('Наибольший общий делитель:', find_max_common_multiplier(i[0], i[1]), '\n')

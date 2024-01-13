@@ -47,7 +47,8 @@ def find_same_begin_entrance(list_in):
 
 
 # example
-list_in = ["flower", "flow", "flight"]
-print(find_same_begin_entrance(list_in))
 
-
+test_lists = (["flower", "flow", "flight"], ["flower", "flow", "floor"], 25,
+              'beer', ["flower", 25, "flight"], ["flower", [100, 5], "flight"])
+for x in test_lists:
+    print(find_same_begin_entrance(x), '\n')

@@ -6,32 +6,47 @@
 • Открытые скобки должны быть закрыты в правильном порядке.
 • Каждой закрытой скобке соответствует открытая скобка того же типа.
 """
-string_in = '()(([}})[]]]]['
-string_list = list(string_in)
-open_parenth = ['(', '[', '{']
-pair_parenth = {'(': ')', '[': ']', '{': '}'}
-stack = []
-Error = False
-for parenth in string_list:
-    if parenth in open_parenth:    # Если скобка открывающая.
-        stack += parenth           # То добавляем ее в стек не закрытых скобок.
-        continue
-    if not stack:                  # Если скобка закрывающая, но стек открывающих скобок пуст.
-        print(stack, 'Error 3')    # То лишняя закрывающая скобка. Флаг ошибки. Выход.
-        Error = True
-        break
-    elif parenth != pair_parenth[stack[-1]]:    # Если скобка закрывающая, но не совпадает с верхней в стеке.
-        print(stack, 'Error 1.')                # То скобка другого вида. Флаг ошибки. Выход
-        stack = stack[:-1]
-        Error = True
-        break
-    else:                       # Скобка закрывающая и совпадает с верхней в стеке
-        stack = stack[:-1]      # То ОК. Убираем верхний элемент из стека. Идем на следующей элемент списка скобок
-
-if stack != []:                     # Если после итерации всей строки стек незакрытых скобок пуст
-    Error = True                    # То была лишняя открытая скобка. Флаг ошибки. Выход
-    print(stack, 'Error 2.')
-
-print(True)    # Строка скобок валидна.
 
 
+def checking_parenth_str(string_in):
+    # Проверка скобок на допустимость. На выходе True - если нет ошибок
+    open_parentheses = ['(', '[', '{']
+    pair_parentheses = {'(': ')', '[': ']', '{': '}'}
+    string_list = list(string_in)
+    stack = []
+    no_error = True  # Флаг отсутствия ошибок
+    for parenth in string_list:
+        if parenth in open_parentheses:    # Если скобка открывающая.
+            stack += parenth           # То добавляем ее в стек не закрытых скобок.
+            continue
+        if not stack:                  # Если скобка закрывающая, но стек открывающих скобок пуст.
+            no_error = False           # То лишняя закрывающая скобка. Флаг ошибки. Выход.
+            break
+        elif parenth != pair_parentheses[stack[-1]]:    # Если скобка закрывающая, но не совпадает с верхней в стеке.
+            ...                                     # То скобка другого вида. Флаг ошибки. Выход
+            no_error = False
+            break
+        else:                       # Скобка закрывающая и совпадает с верхней в стеке
+            stack = stack[:-1]      # То ОК. Убираем верхний элемент из стека. Идем на следующей элемент списка скобок
+    if stack:                       # Если после итерации всей строки стек незакрытых скобок НЕ пуст
+        no_error = False            # То была лишняя открытая скобка. Флаг ошибки. Выход
+    return no_error
+
+
+def input_parenth():
+    # Ввод скобок с клавиатуры с контролем. На выходе строка со скобками.
+    all_parentheses = ['[', ']', '{', '}', '(', ')']
+    while True:
+        parenth_str = input('Введите строку содержащую только символы скобок "[]{}()" :')
+        if all((i in all_parentheses for i in parenth_str)):
+            return parenth_str
+        print('Введены неверные символы. Повторите ввод.\n')
+
+
+while True:
+    parenth_string = input_parenth()
+    is_parenth_ok = checking_parenth_str(parenth_string)
+    if is_parenth_ok:
+        print(f'Строка {parenth_string} является допустимой')
+    else:
+        print(f'Строка {parenth_string} является НЕ допустимой')
