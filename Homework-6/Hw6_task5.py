@@ -22,32 +22,35 @@ def checking_input_data(two_dim_list):
     # Проверяет аргумент, на соответствие требованиям. 0 - если нет ошибки, иначе - код ошибки
     if not isinstance(two_dim_list, list):
         print("На входе не список")
-        return 0b0001
+        return False
     for i in two_dim_list:
         if not isinstance(i, list):
             print("Список первого уровня содержит не список")
-            return 0b0010
+            return False
         if len(i) != len(two_dim_list):
             print('Количество строк не совпадает с количеством столбцов')
-            return 0b0100
+            return False
         for j in i:
             if not isinstance(j, (int, float)):
                 print('В элементах списка содержится не число')
-                return 0b1000
-    return 0
+                return False
+    return True
 
 
 def transpose_2dim_list_entrance(two_dim_list):
-    # Проверяем валидность входных данных. Если данные не соответствуют - передаем на выход код ошибки
+    # Проверяем валидность входных данных. Если данные не соответствуют - False
     # Иначе - выполняем транспонирование и передаем на выход результирующей список.
     check_result = checking_input_data(two_dim_list)
-    if check_result != 0:
-        return check_result
-    else:
+    if check_result:
         return transpose_2dim_list(two_dim_list)
+    else:
+        return False
 
 
-list_in = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-list_out = transpose_2dim_list_entrance(list_in)
-print(f'{list_in}\n{list_out}')
+test_lists_in = [[[1, 2, 3], [4, 5, 6], [7, 8, 9]], [[1, 2, 3], [4, 5, 6], [7, 8, 9]],
+           [[1, 2, 'a'], [4, 5, 6], [7, 8, 9]], [[1, 2, 3], [4, 5], [7, 8, 9]],
+           [[1, 2, 3], 8, [7, 8, 9]], 25]
+for i in test_lists_in:
+    print(i, '  ====>  ', transpose_2dim_list_entrance(i))
+
 

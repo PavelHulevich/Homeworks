@@ -18,27 +18,31 @@ def find_max_items(two_dim_list):
 def checking_input_data(two_dim_list):
     if not isinstance(two_dim_list, list):
         print('На входе не список')
-        return 100
+        return False
     for i in two_dim_list:
         if not isinstance(i, list):
             print("Список первого уровня содержит не список")
-            return 102
+            return False
         for j in i:
             if not isinstance(j, (int, float)):
                 print('В элементах списка содержится не число')
-                return 101
-    return 0
+                return False
+    return True
 
 
 def find_max_items_entrance(two_dim_list):
-    # Проверяем валидность входных данных. Если данные не соответствуют - передаем на выход код ошибки
+    # Проверяем валидность входных данных. Если данные не соответствуют - на выходе False
     # Иначе - На выходе список с максимальными значениями из всех списков второго уровня.
     check_result = checking_input_data(two_dim_list)
-    if check_result != 0:
-        return check_result
-    else:
+    if check_result:
         return find_max_items(two_dim_list)
+    else:
+        return check_result
 
 
-two_dim_list = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 2, 3, 56], [4, 95, 6], [7, 8, 9]]
-print(find_max_items_entrance(two_dim_list))
+tests_two_dim_list = ([[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 2, 3, 56], [4, 95, 6], [7, 8, 9]],
+                [[1, 'j', 3], [4, 5, 6], [7, 8, 9], [1, 2, 3, 56], [4, 95, 6], [7, 8, 9]],
+                [[1, 2, 3], 25, [7, 8, 9], [1, 2, 3, 56], [4, 95, 6], [7, 8, 9]],
+                45)
+for i in tests_two_dim_list:
+    print(i, '  ====>   ', find_max_items_entrance(i))
