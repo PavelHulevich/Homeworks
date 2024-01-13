@@ -3,7 +3,7 @@
 Написать программу, которая объединяет два упорядоченных по возрастанию массива чисел
 в один, который также должен быть упорядочен по возрастанию.
 """
-# # # Method 1. Simplest for Python
+# Method 1. Simplest for Python
 # a.extend(b)
 # a.sort()
 # print(a)
@@ -16,7 +16,8 @@ def sorting_list(list):
             if list[i] > list[i + 1]:
                 list[i], list[i + 1] = list[i + 1], list[i]
                 flag = False
-        if flag: break  # Perform a bubble sort on the list. Until an idle pass occurs (stay True).
+        if flag:
+            break  # Perform a bubble sort on the list. Until an idle pass occurs (stay True).
     return list
 
 

@@ -19,5 +19,7 @@ while True:
         print('Введены недопустимые данные. Повторите ввод')
     else:
         break
-print('Введнн массив: ', two_dim_list)
+print('Введен массив: ')
+print(i for i in two_dim_list)
+    
 print('Сумма элементов по столбцам: ', sum_cols)

@@ -3,11 +3,35 @@
 Написать программу, которая определяет количество учеников в классе, чей рост превышает
 средний. На входе программа принимает список чисел.
 """
-a = [125, 135, 127, 145, 150, 130, 140, 132]
-average_height = sum(a)/len(a)
-print(average_height)
-b = 0
-for i in a:
-    if i > average_height:
-        b += 1
-print(b)
+
+def counting_above_average(list_of_height):
+    average_height = sum(list_of_height) / len(list_of_height)
+    above_average = 0
+    for height in list_of_height:
+        if height > average_height:
+            above_average += 1
+    return above_average
+
+def checking_input_data(list_of_height):
+    if not isinstance(list_of_height, list):
+        print('На входе не список')
+        return 'Error 100'
+    for i in list_of_height:
+        if not isinstance(i, (int, float)):
+            print('В элементах списка содержится не число')
+            return 'Error 101'
+    return 0
+
+def counting_above_average_entrance(list_of_height):    # Точка входа в выполнение задания
+    check_result = checking_input_data(list_of_height)  # Функция проверки входных данных
+    if check_result != 0:
+        return check_result
+    else:
+        return counting_above_average(list_of_height)   # Основная функция. Считаем учеников с ростом выше среднего.
+
+
+# Пример тестовых запусков
+tets_lists = [[125, 135, 127, 145, 150, 130, 140, 132], [125, 135, '127', 145, 150, 130, 140, 132], 'sdsd', 25]
+for list_in in tets_lists:
+    print('Результат :', counting_above_average_entrance(list_in))
+

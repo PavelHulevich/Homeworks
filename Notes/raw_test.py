@@ -1,8 +1,12 @@
-list_1 = [125, 135, 127, 145, 150, 130, 140, 26, 132]
-list_2 = [77, 25, 66, 88, 56, 2, 500]
+string_in = '{}()[]{{(())}}[(])'
+string_in = '([])[]{()}'
+open_parenth = ['(', '[', '{']
+close_parenth = [')', ']', '}']
+pair_parenth = {'(': ')', '[': ']', '{': '}' }
+string_list = list(string_in)
+steck = '[('
+i = 2
+print(string_list[2], pair_parenth[steck[-1]])
 
-list_1.extend(list_2)
-
-list_1.sort()
-print(list_1)
-
+# if string_list[2] == steck[-1]:
+#     steck = steck[:-1]
