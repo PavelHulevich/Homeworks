@@ -18,11 +18,11 @@ def checking_input_data(list_in):
 
 
 def find_max_min(list_in):
-    # Method 1. Simplest
+    # Способ 1. Простейший
     list_in.sort()
-    print(list_in[0], list_in[-1])
+    print(f'Min: {list_in[0]}, Max: {list_in[-1]}')
 
-    # Method 2. For-Cycle
+    # Способ 2. Цикл for
     max_num = list_in[0]
     min_num = list_in[0]
     for i in list_in:
@@ -30,9 +30,9 @@ def find_max_min(list_in):
             min_num = i
         if i > max_num:
             max_num = i
-    print(min_num, max_num)
+    print(f'Min: {min_num}, Max: {max_num}')
 
-    # Method 3. While-Cycle
+    # Способ 3. Цикл while
     max_num = list_in[0]
     min_num = list_in[0]
     i = 0
@@ -42,7 +42,7 @@ def find_max_min(list_in):
         if list_in[i] > max_num:
             max_num = list_in[i]
         i += 1
-    print(min_num, max_num)
+    print(f'Min: {min_num}, Max: {max_num}')
 
 
 def find_max_min_entrance(list_in):
@@ -54,7 +54,8 @@ def find_max_min_entrance(list_in):
     return check_result
 
 
+# Тестовые прогоны
 number_list = [[34, 5.3, 475, 56, 765], [34, 's', 475, 56, 765], 25, 'swd',
                [34, 5.3, 475, 56, 765], [888, 5.3, 475, 56, 765]]
 for x in number_list:
-    print(x, find_max_min_entrance(x))
+    print(x, find_max_min_entrance(x),'\n')

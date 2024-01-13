@@ -16,12 +16,12 @@ def counting_above_average(list_of_height):
 
 def checking_input_data(list_of_height):
     if not isinstance(list_of_height, list):
-        print('На входе не список')
-        return 'Error 100'
+        print('Ошибка. На входе не список')
+        return 'Ошибка входных данных'
     for i in list_of_height:
         if not isinstance(i, (int, float)):
-            print('В элементах списка содержится не число')
-            return 'Error 101'
+            print('Ошибка. В элементах списка содержится не число')
+            return 'Ошибка входных данных'
     return 0
 
 
@@ -33,7 +33,8 @@ def counting_above_average_entrance(list_of_height):    # Точка входа 
         return counting_above_average(list_of_height)   # Основная функция. Считаем учеников с ростом выше среднего.
 
 
-# Пример тестовых запусков
+# Тестовые прогоны
 test_lists = [[125, 135, 127, 145, 150, 130, 140, 132], [125, 135, '127', 145, 150, 130, 140, 132], 'say', 25]
 for list_in in test_lists:
-    print('Результат :', counting_above_average_entrance(list_in))
+    print(f'Рост учеников в классе: {list_in}')
+    print('Число учеников с ростом выше среднего :', counting_above_average_entrance(list_in), '\n')

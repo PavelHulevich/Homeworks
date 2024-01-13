@@ -44,4 +44,7 @@ def counting_sum_of_columns_entrance():
     return sum_cols
 
 
-counting_sum_of_columns_entrance()
+# Тестовые прогоны
+while True:
+    counting_sum_of_columns_entrance()
+    print('')

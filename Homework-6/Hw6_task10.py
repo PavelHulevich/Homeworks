@@ -43,10 +43,14 @@ def input_parenth():
         print('Введены неверные символы. Повторите ввод.\n')
 
 
-while True:
+def checking_parenth():
     parenth_string = input_parenth()
     is_parenth_ok = checking_parenth_str(parenth_string)
     if is_parenth_ok:
         print(f'Строка {parenth_string} является допустимой')
     else:
         print(f'Строка {parenth_string} является НЕ допустимой')
+
+
+while True:
+    checking_parenth()

@@ -19,7 +19,6 @@ def find_max_common_item(list1: list, list2: list):
 
 
 def validation_data(first_number, second_number):
-    # Checking data validity
     if ((type(first_number)) != int or (type(second_number)) != int or
             first_number < 1 or second_number < 1):
         print('Входные данные не верны')
@@ -37,11 +36,17 @@ def find_max_common_multiplier(first_number, second_number):
         max_common_multiplier = find_max_common_item(prime_multipliers_list1, prime_multipliers_list2)
         return max_common_multiplier
     else:
-        return 0
+        return 'Входные данные не верны. Общего делителя нет'
 
 
-# Test example
-test_arguments = [[25, 5], [14.3, 28], [-1, 20], ['d', 6], [25, 0], [[5, 2, 3], 2]]
-for i in test_arguments:
-    print(f'Число 1: {i[0]},  Число 2: {i[1]}')
-    print('Наибольший общий делитель:', find_max_common_multiplier(i[0], i[1]), '\n')
+# Тестовые прогоны
+from random import randint
+from time import sleep
+test_arguments = [25, 5, 14.3, 28, -1, 20, 'd', 6, 25, 0, 5, 2, 3, 2, 34, 16, 100, 50, 25, 75]
+test_len = len(test_arguments)-1
+while True:
+    item_1 = test_arguments[randint(0, test_len)]
+    item_2 = test_arguments[randint(0, test_len)]
+    print(f'Число 1: {item_1},  Число 2: {item_2}')
+    print('Наибольший общий делитель:', find_max_common_multiplier(item_1, item_2), '\n')
+    sleep(3)

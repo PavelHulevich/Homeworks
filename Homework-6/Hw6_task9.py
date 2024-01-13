@@ -8,18 +8,18 @@
 
 
 def find_common_prefix(list_in):
-    # Find common prefix in list of string. Result - common prefix or "" if no common prefix
+    # Поиск общего префикса. На выходе строка с общим префиксом или "" если нет общего префикса.
     word_min_len = min((len(i) for i in list_in))
     common_prefix = ''
     for index_of_char in range(0, word_min_len):
         common_prefix += list_in[0][index_of_char]
-        is_diff_char = False  # flag, is the different char in others words
+        is_diff_char = False
         for word in list_in:
             if word[index_of_char] != common_prefix[index_of_char]:
                 is_diff_char = True
                 break
         if is_diff_char:
-            common_prefix = common_prefix[0:-1]  # Remove the last char of the prefix, since it not pass the analysis.
+            common_prefix = common_prefix[0:-1]
             break
     return common_prefix
 
@@ -27,12 +27,12 @@ def find_common_prefix(list_in):
 def checking_input_data(list_in):
     # Проверка валидности исходных данных. На выходе либо код ошибки, либо 0, если нет ошибки.
     if not isinstance(list_in, list):
-        print('На входе не список')
-        return 100  # Error 100
+        print('Ошибка. На входе не список')
+        return 'Ошибка. Нет общего префикса'
     for i in list_in:
         if not isinstance(i, str):
-            print("Список содержит не строки")
-            return 102  # Error 102
+            print("Ошибка. Список содержит не строки")
+            return 'Ошибка. Нет общего префикса'
     return 0  # No errors
 
 
@@ -41,14 +41,13 @@ def find_same_begin_entrance(list_in):
     # Иначе - На выходе список с общим для всех элементов списка префиксом, либо "" если общего префикса нет.
     check_input = checking_input_data(list_in)
     if check_input != 0:
-        return check_input  # Error number. In case of an error, the main function is not called
+        return check_input
     else:
-        return find_common_prefix(list_in)  # Common prefix
+        return find_common_prefix(list_in)
 
 
-# example
-
+# Тестовые прогоны
 test_lists = (["flower", "flow", "flight"], ["flower", "flow", "floor"], 25,
               'beer', ["flower", 25, "flight"], ["flower", [100, 5], "flight"])
 for x in test_lists:
-    print(find_same_begin_entrance(x), '\n')
+    print(f'В списке слов: {x}, общий префикс: ', find_same_begin_entrance(x), '\n')
