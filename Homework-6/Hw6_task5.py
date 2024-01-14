@@ -11,11 +11,11 @@
 def transpose_2dim_list(list_in):
     # Транспонирование списка
     size = len(list_in)
-    b = [[0] * size for _ in range(size)]
-    for i in range(3):
-        for j in range(3):
-            b[i][j] = list_in[j][i]
-    return b
+    list_out = [[0] * size for _ in range(size)]
+    for i in range(size):
+        for j in range(size):
+            list_out[i][j] = list_in[j][i]
+    return list_out
 
 
 def checking_input_data(two_dim_list):
@@ -48,7 +48,7 @@ def transpose_2dim_list_entrance(two_dim_list):
 
 
 # Тестовые прогоны
-test_lists_in = [[[1, 2, 3], [4, 5, 6], [7, 8, 9]], [[1, 2, 3], [4, 5, 6], [7, 8, 9]],
+test_lists_in = [[[1, 2, 3], [4, 5, 6], [7, 8, 9]], [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12],  [13, 14, 15, 16]],
                  [[1, 2, 'a'], [4, 5, 6], [7, 8, 9]], [[1, 2, 3], [4, 5], [7, 8, 9]],
                  [[1, 2, 3], 8, [7, 8, 9]], 25]
 for x in test_lists_in:
