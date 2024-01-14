@@ -40,10 +40,10 @@ def operating_with_sets_enter(set_1, set_2):
         return False  # Errors
 
 
-test_sets = [{1, 2, 3, 4}, {3, 4, 5, 6}, {71, 25, 3, 4}, {3, 4, 28, 6}, {1, 45, 3, 4},
-            {3, 4, 'say', 6}, {1, 'in', 3, 4}, {3, 4, 5, 6}, 'day', 25]
+test_sets = ({1, 2, 3, 4}, {3, 4, 5, 6}, {71, 25, 3, 4}, {3, 4, 28, 6}, {1, 45, 3, 4},
+             {3, 4, 'say', 6}, {1, 'in', 3, 4}, {3, 4, 5, 6}, 'day', 25)
 while True:
-    set_index_1 = randint(0, len(test_sets))-1
-    set_index_2 = randint(0, len(test_sets))-1
+    set_index_1 = randint(0, len(test_sets)) - 1
+    set_index_2 = randint(0, len(test_sets)) - 1
     operating_with_sets_enter(test_sets[set_index_1], test_sets[set_index_2])
     sleep(3)
