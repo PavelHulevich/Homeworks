@@ -27,7 +27,7 @@ def checking_input_data(list_of_height):
 
 def counting_above_average_entrance(list_of_height):    # Точка входа в выполнение задания
     check_result = checking_input_data(list_of_height)  # Функция проверки входных данных
-    if check_result != 0:
+    if check_result:
         return check_result
     else:
         return counting_above_average(list_of_height)   # Основная функция. Считаем учеников с ростом выше среднего.

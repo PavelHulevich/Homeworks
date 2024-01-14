@@ -40,7 +40,7 @@ def find_same_begin_entrance(list_in):
     # Проверяем валидность входных данных. Если данные не соответствуют - передаем на выход код ошибки
     # Иначе - На выходе список с общим для всех элементов списка префиксом, либо "" если общего префикса нет.
     check_input = checking_input_data(list_in)
-    if check_input != 0:
+    if check_input:
         return check_input
     else:
         return find_common_prefix(list_in)
