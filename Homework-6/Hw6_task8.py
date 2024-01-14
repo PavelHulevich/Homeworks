@@ -14,12 +14,12 @@
 # Спобос 2.
 def sorting_list(list_in):
     while True:
-        flag = True
+        is_all_sorted = True    # Флаг полной сортировки. Начально True, иначе цикл проверок не закончится.
         for i in range(len(list_in) - 2):
             if list_in[i] > list_in[i + 1]:
                 list_in[i], list_in[i + 1] = list_in[i + 1], list_in[i]
-                flag = False
-        if flag:
+                is_all_sorted = False  # Если была сортировка хотя бы в одном месте. То требуется повторный прогон.
+        if is_all_sorted:   # Если в ходе прохода списка сортировок не произошло. Выход из цикла.
             break
     return list_in
 
