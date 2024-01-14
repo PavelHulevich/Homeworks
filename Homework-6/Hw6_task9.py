@@ -11,15 +11,15 @@ def find_common_prefix(list_in):
     # Поиск общего префикса. На выходе строка с общим префиксом или "" если нет общего префикса.
     word_min_len = min((len(i) for i in list_in))
     common_prefix = ''
-    for index_of_char in range(0, word_min_len):
-        common_prefix += list_in[0][index_of_char]
-        is_diff_char = False
-        for word in list_in:
+    for index_of_char in range(0, word_min_len):  # Итерируем первые символы на глубину самого короткого слова
+        common_prefix += list_in[0][index_of_char]  # Берем очередной символ первого слова (Номер слова не важен)
+        is_diff_char = False                        # Флаг отличия этого символа в разных словах
+        for word in list_in:                        # Итерируемся по всем словам, проверяя символы в текущей позиции.
             if word[index_of_char] != common_prefix[index_of_char]:
-                is_diff_char = True
-                break
+                is_diff_char = True                 # Если символы первого слова и любого другого отличаются
+                break                               # То прерываем цикл
         if is_diff_char:
-            common_prefix = common_prefix[0:-1]
+            common_prefix = common_prefix[0:-1]     # Убираем последний символ префикса, так как он не совпал.
             break
     return common_prefix
 
@@ -28,11 +28,11 @@ def checking_input_data(list_in):
     # Проверка валидности исходных данных. На выходе либо код ошибки, либо 0, если нет ошибки.
     if not isinstance(list_in, list):
         print('Ошибка. На входе не список')
-        return 'Ошибка. Нет общего префикса'
+        return 'Ошибка. Неверные входные данные'
     for i in list_in:
         if not isinstance(i, str):
             print("Ошибка. Список содержит не строки")
-            return 'Ошибка. Нет общего префикса'
+            return 'Ошибка. Неверные входные данные'
     return 0  # No errors
 
 
