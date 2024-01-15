@@ -17,11 +17,11 @@ from time import time
 #     return divisors_list
 def finding_divisors_fast(number: int):
     divisors_list = []
-    dividable = range(1, int(number/2) + 1)
-    for divisor in dividable:
+    divisors = range(1, int(number/2) + 1)  # Ищем делители только до половины числа. Следующий делитель - само число.
+    for divisor in divisors:
         if number % divisor == 0:
             divisors_list.append(divisor)
-    divisors_list.append(number)
+    divisors_list.append(number)  # В конец списка просто добавляем само число, как последний делитель.
     return divisors_list
 
 
