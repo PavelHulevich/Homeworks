@@ -31,10 +31,10 @@ def find_max_common_divisor(first_number, second_number):
     # Если данные введены верно, то на выходе наибольший общий делитель.
     # Если данные введены неверно, то на выходе 0.
     if validation_data(first_number, second_number):
-        prime_multipliers_list1 = finding_divisors(first_number)
-        prime_multipliers_list2 = finding_divisors(second_number)
-        max_common_multiplier = find_max_common_item(prime_multipliers_list1, prime_multipliers_list2)
-        return max_common_multiplier
+        prime_divisors_list1 = finding_divisors(first_number)
+        prime_divisors_list2 = finding_divisors(second_number)
+        max_common_divisor = find_max_common_item(prime_divisors_list1, prime_divisors_list2)
+        return max_common_divisor
     else:
         return 'Входные данные не верны. Общего делителя нет'
 
