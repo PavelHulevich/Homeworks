@@ -5,7 +5,7 @@
 """
 
 
-def find_prime_multipliers(number: int):
+def finding_divisors(number: int):
     prime_multipliers_list = []
     for divider in range(1, number+1):
         if number % divider == 0:
@@ -27,12 +27,12 @@ def validation_data(first_number, second_number):
         return True   # Данные верны. Ошибок нет.
 
 
-def find_max_common_multiplier(first_number, second_number):
+def find_max_common_divisor(first_number, second_number):
     # Если данные введены верно, то на выходе наибольший общий делитель.
     # Если данные введены неверно, то на выходе 0.
     if validation_data(first_number, second_number):
-        prime_multipliers_list1 = find_prime_multipliers(first_number)
-        prime_multipliers_list2 = find_prime_multipliers(second_number)
+        prime_multipliers_list1 = finding_divisors(first_number)
+        prime_multipliers_list2 = finding_divisors(second_number)
         max_common_multiplier = find_max_common_item(prime_multipliers_list1, prime_multipliers_list2)
         return max_common_multiplier
     else:
@@ -42,11 +42,11 @@ def find_max_common_multiplier(first_number, second_number):
 # Тестовые прогоны
 from random import randint
 from time import sleep
-test_arguments = [25, 5, 14.3, 28, -1, 20, 'd', 6, 25, 0, 5, 2, 3, 2, 34, 16, 100, 50, 25, 75]
+test_arguments = [25, 5, 14.3, 28, -1, 20, 'd', 6, 25, 0, 5, 2, 3, 2, 34, 16, 100, 50, 25, 75, 12, 18, 24, 30, 36]
 test_len = len(test_arguments)-1
 while True:
     item_1 = test_arguments[randint(0, test_len)]
     item_2 = test_arguments[randint(0, test_len)]
     print(f'Число 1: {item_1},  Число 2: {item_2}')
-    print('Наибольший общий делитель:', find_max_common_multiplier(item_1, item_2), '\n')
+    print('Наибольший общий делитель:', find_max_common_divisor(item_1, item_2), '\n')
     sleep(3)
