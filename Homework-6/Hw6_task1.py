@@ -6,11 +6,11 @@
 
 
 def finding_divisors(number: int):
-    prime_multipliers_list = []
-    for divider in range(1, number+1):
-        if number % divider == 0:
-            prime_multipliers_list.append(divider)
-    return prime_multipliers_list
+    divisors_list = []
+    for divisor in range(1, number + 1):
+        if number % divisor == 0:
+            divisors_list.append(divisor)
+    return divisors_list
 
 
 def find_max_common_item(list1: list, list2: list):
