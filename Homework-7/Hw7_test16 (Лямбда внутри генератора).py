@@ -23,7 +23,7 @@ def validate_enter_data(string: str) -> bool:
 def finding_different_set_enter(string: str):
     validate_result = validate_enter_data(string)
     if validate_result:
-        alphabet_out = lambda string_in: ({chr(i) for i in range(97, 123) if chr(i) not in string_in})
+        alphabet_out = lambda string_in: {chr(i) for i in range(97, 123) if chr(i) not in string_in}
         print(f'Введена строка: "{string}"\n'
               f'множество символов алфавита за минусом входящих в строку: {alphabet_out(string)} \n')
     else:
