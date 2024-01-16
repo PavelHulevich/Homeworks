@@ -45,7 +45,7 @@ def draw_balls():  # Fill start balls array and draw them
 start = time.time()
 draw_balls()
 # Main cycle
-for _ in range(1):
+for _ in range(5):
     for j in range(360):
         move_balls(j)
         root.update()
