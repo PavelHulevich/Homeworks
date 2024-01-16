@@ -11,10 +11,6 @@
 from random import randint
 from time import sleep
 
-def finding_different_set(string) -> set:
-    alphabet_out = {(lambda i: chr(i))(i) for i in range(97, 123) if chr(i) not in string}
-    return alphabet_out
-
 
 def validate_enter_data(string: str) -> bool:
     # Проверка валидности исходных данных. На выходе False - если ошибка входных данных.
@@ -27,8 +23,9 @@ def validate_enter_data(string: str) -> bool:
 def finding_different_set_enter(string: str):
     validate_result = validate_enter_data(string)
     if validate_result:
-        print(f'Введена строка: "{string}"\n '
-              f' множество символов алфавита за минусом входящих в строку: {finding_different_set(string)}\n')
+        alphabet_out = {(lambda i: chr(i))(i) for i in range(97, 123) if chr(i) not in string}
+        print(f'Введена строка: "{string}"\n'
+              f'множество символов алфавита за минусом входящих в строку: {alphabet_out} \n')
     else:
         print(f'Ошибка, в аргументе: "{string}" входные данные не верны (не строка)\n')
 
