@@ -9,8 +9,9 @@ root = Tk()
 canvas = Canvas(root, width=size, height=size)
 canvas.pack()
 qnt_balls = 9  # number of balls along each axis
-balls_array = [1] * 100  # array (list) of ball properties [Xcoord, Yold_coord, Ynew_coord]
-current_ball_pointers = [1] * 100  # Contains references to objects of canvas.create_image for each ball
+balls_coord = [[x for x in range(0, 10)] for _ in range(0, 10)]  # array of ball properties [X coord, Y old_coord,
+                                                            # Contains references to objects of canvas.create_image]
+sin_list = [int(sin(i * pi / 180) * 55) for i in range(0, 361)]  # table of sinus
 img_ball = [PhotoImage(file='green.png'), PhotoImage(file='red.png'), PhotoImage(file='silver.png'),
             PhotoImage(file='azure.png'), PhotoImage(file='blue.png'), PhotoImage(file='cyan.png'),
             PhotoImage(file='emerald.png'), PhotoImage(file='gold.png'), PhotoImage(file='pink.png'),
@@ -18,37 +19,33 @@ img_ball = [PhotoImage(file='green.png'), PhotoImage(file='red.png'), PhotoImage
             PhotoImage(file='bronze.png'), PhotoImage(file='yellow.png')]
 
 
-def move_balls(grad):  # Move every ball
-    for x in range(qnt_balls):  # Rows of balls
-        for k in range(qnt_balls):  # Columns of balls
-            balls_index = x * qnt_balls + k  # Using one-dimensional array as two-dimensional
-            balls_array[balls_index][2] = grad + k * 15  # Each column of balls is at a diff. height (different angle)
-            balls_array[balls_index][2] = balls_array[balls_index][2] + x * 15  # Delay rows of ball
-            balls_array[balls_index][2] = balls_array[balls_index][2] * pi / 180  # Grad to radian
-            balls_array[balls_index][2] = sin(balls_array[balls_index][2])  # Sinus
-            balls_array[balls_index][2] = (650 - x * 60) + int(
-                balls_array[balls_index][2] * 55)  # New Y-coord each ball
-            canvas.move(current_ball_pointers[balls_index], 0,
-                        (balls_array[balls_index][2] - balls_array[balls_index][1]))  # Move current ball
-            balls_array[balls_index][1] = balls_array[balls_index][2]  # Old Y-coord <== New Y-coord
+def move_balls(grad: int):  # Move every ball
+    for y in range(qnt_balls):  # Rows of balls
+        for x in range(qnt_balls):  # Columns of balls
+            balls_angel_new = grad + x * 15 + y * 15  # x * 15 - Each column of balls is at a diff. height (diff. angle)
+                                                      # y * 15 - Delay rows of ball. Vertical tilt.
+            if balls_angel_new > 360:
+                balls_angel_new -= 360
+            balls_angel_new = sin_list[balls_angel_new]  # Sinus
+            balls_y_new = (650 - y * 60) + balls_angel_new  # New Y-coord each ball
+            canvas.move(balls_coord[y][x][2], 0, (balls_y_new - balls_coord[y][x][1]))  # Move current ball
+            balls_coord[y][x][1] = balls_y_new  # Old Y-coord <== New Y-coord
 
 
 def draw_balls():  # Fill start balls array and draw them
-    for m in range(qnt_balls):
-        for i in range(qnt_balls):
-            balls_index = m * qnt_balls + i  # Using one-dimensional array as two-dimensional
+    for y in range(qnt_balls):
+        for x in range(qnt_balls):
             color_index = randint(0, 13)  # index for list of ball color
-            balls_array[balls_index] = [70 * (i + 1) + m * 20, 650 - m * 60, 650 - m * 60]  # [x, old_y, new_y]
-            current_ball_pointers[balls_index] = canvas.create_image(balls_array[balls_index][0],
-                                                                     balls_array[balls_index][1],
-                                                                     image=img_ball[color_index], anchor=CENTER)
-                                                                        # Draw ball at start position
+            balls_coord[y][x] = [70 * (x + 1) + y * 20, 650 - y * 60, 0]  # [x, old_y, new_y]
+            balls_coord[y][x][2] = canvas.create_image(balls_coord[y][x][0],
+                                                       balls_coord[y][x][1],
+                                                       image=img_ball[color_index], anchor=CENTER)
 
 
 start = time.time()
 draw_balls()
 # Main cycle
-for j3 in range(5):
+for _ in range(1):
     for j in range(360):
         move_balls(j)
         root.update()
