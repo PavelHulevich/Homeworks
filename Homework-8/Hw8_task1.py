@@ -32,7 +32,3 @@ while True:
     test_index = randint(0, len(tests_list)-1)
     summ_of_squares_enter(tests_list[test_index])
     sleep(3)
-
-
-
-
