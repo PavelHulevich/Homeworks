@@ -23,7 +23,6 @@ def class_to_dict(obj_dict):  # for dump json-file.
 
 
 student_list_2 = []
-student_score = dict()
 group_set = set()
 group_dict = dict()
 group_dict_qnt = dict()
@@ -41,7 +40,6 @@ for group in group_set:   # Словарь групп с ключами из м�
     group_dict_qnt[group] = 0  # Количество студентов в группе
 
 all_score_sum = 0  # Сумма средних балов всех студентов.
-group_set.clear()
 for obj in student_list_2:
     print(f'Студент:   {obj.first} {obj.last:13}, возраст: {obj.age:3}, курс: {obj.course:2}, группа: {obj.group:18}\n'
           f'Оценки по предметам: {obj.subject_score}')
@@ -53,7 +51,7 @@ for obj in student_list_2:
     print(f'Средний бал ученика: {average_stud_score}\n')
 
     all_score_sum += average_stud_score
-    group_dict[obj.group] = group_dict[obj.group] + average_stud_score
+    group_dict[obj.group] += average_stud_score
     group_dict_qnt[obj.group] += 1
 
 for k, v in group_dict.items():
