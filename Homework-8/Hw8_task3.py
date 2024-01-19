@@ -11,35 +11,26 @@ write для записи текста в файл. Программа долж�
 from faker import Faker
 import os
 
-def write_file(text):
-    f = open('paragraphs.txt', 'a+')
-    f.write(text)
-    f.close()
-
 
 if os.path.isfile('paragraphs.txt'):
     os.remove('paragraphs.txt')
-    print("success")
+    print("Предыдущий файл с именем paragraphs.txt удален. Создаем новый.")
 else:
-    print("File doesn't exists!")
+    print("Файл paragraphs.txt не существует. Создаем новый")
 
+
+f = open('paragraphs.txt', 'a+',  encoding="utf-8")
 
 fake = Faker('en')
-text_out = 'Английский:  ' + fake.text(50)+'\n'
-write_file(text_out)
-
+text_out = f'Английский. Имя:\n{fake.name()}\n\n'
 fake = Faker('it')
-text_out = 'Итальянский: ' + fake.text(50)+'\n'
-write_file(text_out)
-
+text_out += f'Итальянский. Адрес:\n{fake.address()}\n\n'
 fake = Faker('de')
-text_out = 'Немецкий:    ' + fake.text(50)+'\n'
-write_file(text_out)
-
+text_out += f'Немецкий. Профессия:\n{fake.job()}\n\n'
 fake = Faker('es')
-text_out = 'Испанский:   ' + fake.text(50)+'\n'
-write_file(text_out)
-
+text_out += f'Испанский. Место работы:  \n{fake.company()}\n\n'
 fake = Faker('fr')
-text_out = 'Французский: ' + fake.text(50)+'\n'
-write_file(text_out)
+text_out += f'Французскийю Телефон: \n{fake.phone_number()}\n\n'
+
+f.write(text_out)
+f.close()

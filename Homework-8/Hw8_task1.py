@@ -20,8 +20,8 @@ def summ_of_squares_enter(number: int):
     validate_result = validate_enter_data(number)
     if validate_result:
         summ_of_squares = lambda n: sum([i**2 for i in range(1, n+1)])
-        print(f'Введо число: "{number}"\n'
-              f'сумма квадратов вчех чисел от 1 до {number} = {summ_of_squares(number )} \n')
+        print(f'Введено число: {number}\n'
+              f'сумма квадратов всех чисел от 1 до {number} = {summ_of_squares(number )} \n')
     else:
         print(f'Ошибка, в аргументе: "{number}" входные данные не верны\n')
 
