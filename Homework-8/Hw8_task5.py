@@ -56,7 +56,7 @@ def matching_json_files(json_names: list) -> None:
         print('Словари идентичны')
 
 
-def validate_enter_data(dict_1, dict_2):
+def validate_enter_data(dict_1: dict, dict_2: dict) -> bool:
     if not isinstance(dict_1, dict) or not isinstance(dict_2, dict):
         print('Ошибка. На входе не словарь')
         return False
@@ -66,8 +66,8 @@ def validate_enter_data(dict_1, dict_2):
 def matching_json_files_enter(dict_1: dict, dict_2: dict) -> None:
     validate_result = validate_enter_data(dict_1, dict_2)
     if validate_result:
-        json_names = writing_2json(dict_1, dict_2)  # Сериализация двух словарей в json-файлы: 'dict_1.json' и 'dict_1.json'
-        matching_json_files(json_names)
+        json_names = writing_2json(dict_1, dict_2)  # Сериализация двух словарей в json-файлы. Получаем список с именами
+        matching_json_files(json_names)                 # двух файлов
     else:
         print(f'Введены словари:   {dict_1},   и:   {dict_2}')
         print('Введены неверные данные\n')
