@@ -50,12 +50,11 @@ group_set = set()
 group_dict = dict()
 group_dict_qnt = dict()
 
-# Чтение json-файла. десериализация его содержимого в объект student_list_2 класса Student.
+# Чтение json-файла.
 with open('student_list.json') as infile:
     student_list_load = json.load(infile)
-print(student_list_load)
 
-# Проверка валидности входных данных
+# Проверка валидности входных данных.
 validation_result = validate_enter_data(student_list_load)
 if not validation_result:
     print('Входные данные не верны')
@@ -65,7 +64,7 @@ if not validation_result:
 for stud_card in student_list_load:
     student_list_2.append(Student(stud_card['first'], stud_card['last'], stud_card['age'], stud_card['course'],
                                   stud_card['group'], stud_card['subject_score']))
-    group_set.add(stud_card['group'])  # Множество имеющихся групп.
+    group_set.add(stud_card['group'])  # Создание множества из имеющихся групп.
 
 for group in group_set:   # Словарь групп с ключами из множества, значения - нули.
     group_dict[group] = 0  # Сумма средних балов студентов в группе
