@@ -21,12 +21,12 @@ def calculating_matrix_determinant(pickle_name: str) -> int:
 
 def writing_pickle(matrix_out: list) -> str:
     # Запись матрицы в pickle-файл и выдача на выход имени файла.
-    if os.path.isfile('matrix.pickle'):
-        os.remove('matrix.pickle')
-    # Сериализация и запись словарей в файл.
-    with open('matrix.pickle', 'wb') as outfile:
+    if os.path.isfile('matrix.pkl'):
+        os.remove('matrix.pkl')
+    # Сериализация и запись списка в файл.
+    with open('matrix.pkl', 'wb') as outfile:
         pickle.dump(matrix_out, outfile)
-    return 'matrix.pickle'
+    return 'matrix.pkl'
 
 
 def validate_enter_data(list_1: list, list_2: list) -> bool:
