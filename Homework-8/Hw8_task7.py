@@ -53,9 +53,4 @@ animals = [Animal("Барсик", "кот", "мяу"), Animal("Шарик", "с�
 pickle_name = writing_pickle(animals)  # Сериализация списка объектов класса Анимал в пикл-файл.
 animals_2 = reading_pickle(pickle_name)  # Десериализация списка из файла.
 for animal in animals_2:
-    animals_2.make_sound()
-
-
-# print(animals_in)
-# animals_in[0].make_sound()
-# print(animals_in[0].sound)
+    animal.make_sound()
