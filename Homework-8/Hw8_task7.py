@@ -30,14 +30,13 @@ class Animal:
         print(f'{self.name} это {self.species} он делает: {self.sound}!')
 
 
-def writing_pickle(animals_out: list) -> str:
+def writing_pickle(animals_out: list, name_file: str) -> None:
     # Запись списка в pickle-файл и выдача на выход имени файла.
-    if os.path.isfile('animals.pkl'):
-        os.remove('animals.pkl')
+    if os.path.isfile(name_file):
+        os.remove(name_file)
     # Сериализация и запись списка в файл.
-    with open('animals.pkl', 'wb') as outfile:
+    with open(name_file, 'wb') as outfile:
         pickle.dump(animals_out, outfile)
-    return 'animals.pkl'
 
 
 def reading_pickle(name: str) -> (list, Animal):
@@ -50,7 +49,9 @@ animals = [Animal("Барсик", "кот", "мяу"), Animal("Шарик", "с�
            Animal("Зорька", "лошадь", "иго-го"), Animal("Рыжик", "лиса", "тыф-тыф"),
            Animal("Серый", "волк", "аууу")]
 
-pickle_name = writing_pickle(animals)  # Сериализация списка объектов класса Анимал в пикл-файл.
-animals_2 = reading_pickle(pickle_name)  # Десериализация списка из файла.
+
+pickle_name = 'animals.pkl'
+writing_pickle(animals, pickle_name)     # Сериализация списка объектов класса Анимал в пикл-файл.
+animals_2 = reading_pickle(pickle_name)  # Десериализация из файла в новый список объектов класса.
 for animal in animals_2:
     animal.make_sound()

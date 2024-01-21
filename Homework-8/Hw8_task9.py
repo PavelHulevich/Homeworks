@@ -104,20 +104,20 @@ def printing_server_stat_from_log(file_name: str) -> None:
     server_stat = collecting_server_stat(file_name)
     for resurse in server_stat:
         print(f'\nК ресурсу {resurse[0]} были произведены обращения:')
-        print('Успешные:   ', end='')
+        print('    Успешные:   ', end='')
         for k, v in resurse[1].items():
             if v != 0:
                 print(f'{k}: {v}  ', end='')
-        print('\nНеуспешные:   ', end='')
+        print('\n    Неуспешные:   ', end='')
         for k, v in resurse[2].items():
             if v != 0:
                 print(f'{k}: {v}  ', end='')
         print()
 
 
-log_file_name = 'log_file'
-records_quantity = 5
-# creating_log_file(log_file_name, records_quantity)
+log_file_name = 'log_file'  # Название генерируемого лог-файла
+records_quantity = 30       # Количество элементов в генерируемом файле
+creating_log_file(log_file_name, records_quantity)
 printing_server_stat_from_log(log_file_name)
 
 

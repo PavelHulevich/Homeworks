@@ -5,12 +5,12 @@
 {"a": 1, "b": 4, "d": 5}, то программа должна вывести "Ключи b и c разные, ключ d отсутствует
 в первом файле"
 """
-from random import randint
+from random import choice
 import os
 import json
 from time import sleep
 """
-После запуска происходит бесконечный цикл с задержкой в 3 секунды с произвольной выборкой двух словарей
+После запуска происходит бесконечный цикл с задержкой в 2 секунды с произвольной выборкой двух словарей
  из списка валидных и невалидных вариантов 
 """
 
@@ -73,7 +73,7 @@ def matching_json_files_enter(dict_1: dict, dict_2: dict) -> None:
         print('Введены неверные данные\n')
 
 
-TEST_LIST_OF_DICT = [{'a': 1, 'b': 2, 'c': 3}, {'a': 25, 'd': 5, 'e': 37}, {'a': 31, 'b': 85, 'c': 46},
+TEST_LIST = [{'a': 1, 'b': 2, 'c': 3}, {'a': 25, 'd': 5, 'e': 37}, {'a': 31, 'b': 85, 'c': 46},
                      {'a': 31, 'b': 85, 'c': 46}, {'b': 4, 'd': 5}, [1, 5, 7], 'say', 25,
                      {"a": 1, "b": 2, "c": 3, "f": 9}, {"a": 1, "b": 4, "d": 5, "f": 10},
                      {'a': 1, 'b': 2, 'c': 5}, {'a': 1, 'b': 77, 'c': 3}, {'a': 35, 'b': 2, 'c': 3},
@@ -81,7 +81,5 @@ TEST_LIST_OF_DICT = [{'a': 1, 'b': 2, 'c': 3}, {'a': 25, 'd': 5, 'e': 37}, {'a':
                      {'a': 35, 'b': 2, 'c': 3, 'e': 4}, {'a': 35, 'b': 2, 'c': 3, 'w': 6}]
 # Тестовые прогоны.
 while True:
-    dict_index_1 = randint(0, len(TEST_LIST_OF_DICT)) - 1
-    dict_index_2 = randint(0, len(TEST_LIST_OF_DICT)) - 1
-    matching_json_files_enter(TEST_LIST_OF_DICT[dict_index_1], TEST_LIST_OF_DICT[dict_index_2])
-    sleep(3)
+    matching_json_files_enter(choice(TEST_LIST), choice(TEST_LIST))
+    sleep(2)

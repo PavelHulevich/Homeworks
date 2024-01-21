@@ -51,4 +51,4 @@ TEST_LIST = [{1, 2, 3, 4, 5}, {1, 2, 3, 4}, {1, 2, 3}, {1, 2, 'S', 4, 5},
                   {1, 2}, {1, 2, 3}, {1, 2, 3}, {1, 2, 'say', 4, 5},]
 while True:
     finding_subsets_entry(choice(TEST_LIST))
-    sleep(3)
+    sleep(2)

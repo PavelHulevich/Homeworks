@@ -15,14 +15,14 @@ from random import randint
 import os
 
 
-def creating_weather_file(city_quantity: int, name: str) -> None:
+def creating_weather_file(city_quantity: int, name_file: str) -> None:
     # Удаляем старый файл, если он есть.
-    if os.path.isfile(name):
-        os.remove(name)
+    if os.path.isfile(name_file):
+        os.remove(name_file)
     # Создаем файл, в каждой строчке которого генерируется информация о погоде в городе.
     city_weather = []
     fake = Faker('ru')
-    outfile = open(name, 'a+', encoding="utf-8")
+    outfile = open(name_file, 'a+', encoding="utf-8")
     for _ in range(0, city_quantity):
         city_weather.clear()
         city_weather.append(fake.city())
@@ -53,8 +53,8 @@ def finding_min_max_temp(name_file: str) -> list:
     return [city_min_t[:2], city_max_t[:2]]
 
 
-def validate_enter_data(name: str) -> bool:
-    infile = open(name, 'r', encoding="utf-8")
+def validate_enter_data(name_file: str) -> bool:
+    infile = open(name_file, 'r', encoding="utf-8")
     for line in infile:
         line_current = line.split(', ')
         if len(line_current) != 6:
@@ -72,14 +72,17 @@ def validate_enter_data(name: str) -> bool:
         return True
 
 
-city_qnt = 10  # Количество генерируемых городов.
-name_file = 'weather.txt'  # Имя создаваемого файла.
-creating_weather_file(city_qnt, name_file)
+def finding_min_max_temp_entry(name_file):
+    validate_result = validate_enter_data(name_file)
+    if not validate_result:
+        print(f'Данные в файле {name_file} не соответствуют протоколу')
+    else:
+        min_max_cities = finding_min_max_temp(name_file)
+        print(f'Минимальная температура в: {min_max_cities[0][0]}, составляет: {min_max_cities[0][1]} градусов')
+        print(f'Максимальная температура в: {min_max_cities[1][0]}, составляет: {min_max_cities[1][1]} градусов')
 
-validate_result = validate_enter_data(name_file)
-if not validate_result:
-    print(f'Данные в файле {name_file} не соответствуют протоколу')
-    exit()
-min_max_cities = finding_min_max_temp(name_file)
-print(f'Минимальная температура в: {min_max_cities[0][0]}, составляет: {min_max_cities[0][1]} градусов')
-print(f'Максимальная температура в: {min_max_cities[1][0]}, составляет: {min_max_cities[1][1]} градусов')
+
+city_qnt = 10  # Количество генерируемых городов.
+name = 'weather.txt'  # Имя создаваемого файла.
+creating_weather_file(city_qnt, name)
+finding_min_max_temp_entry(name)

@@ -4,7 +4,7 @@
 чисел) и выводит на экран ее определитель. Если матрица не квадратная, то программа
 должна вывести сообщение об ошибке.
 """
-from random import randint
+from random import choice
 import os
 import pickle
 from time import sleep
@@ -57,7 +57,7 @@ def calculating_matrix_determinant_enter(list_1: list, list_2: list) -> int:
         print('Введены неверные данные\n')
 
 
-TEST_LIST_OF_LISTS = [[1, 2], [-2, 3], [4, -5], [4, 7], [-8, 9], [10, -11], [11, 12], [-12, 13],
+TEST_LIST = [[1, 2], [-2, 3], [4, -5], [4, 7], [-8, 9], [10, -11], [11, 12], [-12, 13],
                       [1, 'a'], [2, 3], ['say', 5], 25, {8, 9}, 'day', [11, 12],
                       [12, 13, 5], [10, 11, 8], [11, 12, 7], [12, 13], [8, -9], [-10, 11], [-11, 12]]
 # Тестовые прогоны.
@@ -65,7 +65,5 @@ if calculating_matrix_determinant_enter([11, -3], [-15, -2]) != -67:
     print('Ошибка в работе логики программы')
     exit()
 while True:
-    list_index_1 = randint(0, len(TEST_LIST_OF_LISTS)) - 1
-    list_index_2 = randint(0, len(TEST_LIST_OF_LISTS)) - 1
-    calculating_matrix_determinant_enter(TEST_LIST_OF_LISTS[list_index_1], TEST_LIST_OF_LISTS[list_index_2])
-    sleep(3)
+    calculating_matrix_determinant_enter(choice(TEST_LIST), choice(TEST_LIST))
+    sleep(2)

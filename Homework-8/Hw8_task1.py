@@ -4,7 +4,7 @@
 от 1 до n.
 """
 
-from random import randint
+from random import choice
 from time import sleep
 
 
@@ -27,8 +27,7 @@ def summ_of_squares_enter(number: int):
 
 
 # Тестовые прогоны
-tests_list = ["Hello, world!",  2, 3, 6, 5, 25, 4, ['machine', 'vending'], {25, 35, 75}, 'a']
+TESTS_LIST = ["Hello, world!",  2, 3, 6, 5, 25, 4, ['machine', 'vending'], {25, 35, 75}, 'a']
 while True:
-    test_index = randint(0, len(tests_list)-1)
-    summ_of_squares_enter(tests_list[test_index])
-    sleep(3)
+    summ_of_squares_enter(choice(TESTS_LIST))
+    sleep(2)
