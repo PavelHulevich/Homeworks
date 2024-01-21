@@ -51,7 +51,7 @@ def collecting_server_stat(name: str) -> list:
     return stat_out
 
 
-def creating_log_file(name: str, records_qnt: int) -> bool:
+def creating_log_file(name: str, records_qnt: int) -> None:
     TYPE_OF_REQUEST = ('/index.html', '/login.php', '/upload.php')
     fake = Faker('ru')
     # Удаляем старый файл, если он есть.
@@ -86,6 +86,11 @@ def validate_enter_data(name: str) -> bool:
             print('Ошибка. Неверная запись о дате или времени ')
             infile.close()
             return False
+        try:
+            _ = int(line_current[5])
+        except ValueError:
+            print('Ошибка. Данные времени запроса не целое число')
+            return False
     infile.close()
     return True
 
@@ -112,7 +117,7 @@ def printing_server_stat_from_log(file_name: str) -> None:
 
 log_file_name = 'log_file'
 records_quantity = 5
-creating_log_file(log_file_name, records_quantity)
+# creating_log_file(log_file_name, records_quantity)
 printing_server_stat_from_log(log_file_name)
 
 
