@@ -7,7 +7,7 @@ from random import choice
 from time import sleep
 
 
-def power(x:(int, float), y:(int, float)) -> (int, float):
+def power(x: (int, float), y: (int, float)) -> (int, float):
     if y <= 1:
         return x
     else:
@@ -33,10 +33,7 @@ def calculating_degree_number(number_1: (int, float), number_2: (int, float)) ->
 
 
 # Тестовые прогоны
-TEST_LIST = [2 ,3, 4, 5, 6, 7, 8, 9,'a', 'say', [1, 2, 3], 5.2, 1.3, 4.2, {2, 1}, False]
+TEST_LIST = [2, 3, 4, 5, 6, 7, 8, 9, 'a', 'say', [1, 2, 3], 5.2, 1.3, 4.2, {2, 1}, False]
 while True:
     calculating_degree_number(choice(TEST_LIST), choice(TEST_LIST))
     sleep(2)
-
-
-
