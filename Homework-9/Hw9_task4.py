@@ -41,7 +41,7 @@ def count_vowels_entry(string_in: str, case_sensitive: bool = False) -> None:
     if is_validate_data(string_in, case_sensitive):
         print('Количество гласных букв во введенной строке: ', count_vowels(string_in, case_sensitive))
     else:
-        print('Не верные входные данные')
+        print('Неверные входные данные')
 
 
 TEST_LIST = ["Hello, world!", "Hello, WORLD!", 'map_square', 'from time import sleep', 'from time IMPORT SLEEP',
