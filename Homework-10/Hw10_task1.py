@@ -98,4 +98,3 @@ TEST_LIST = [[2, 3, 4, 2, 3, 4, 2, 3, 4, 2, 3, 4, 2, 3, 4,], [1, 2, 3], [2, 3, 4
              6, 25, 'say', [2, 3, 'day', 5, 6], False, [1, [2, 6], 3], {45, 6}, 25.4]
 for index in TEST_LIST:
     calculate_list_entry(index)
-
