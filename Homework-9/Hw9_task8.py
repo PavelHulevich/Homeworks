@@ -18,7 +18,7 @@ def calc_sum_list(list_in: list) -> int:
         try:
             return list_in[0] + calc_sum_list(list_in[1:])
         except TypeError:
-            print(f'СРАБОТАЛО ИСКЛЮЧЕНИЕ: {sys.exc_info()[0]}  В списке содержатся не число')
+            print(f'СРАБОТАЛО ИСКЛЮЧЕНИЕ: {sys.exc_info()[0]}  В списке содержится не число')
             return 0
 
 
