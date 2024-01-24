@@ -8,7 +8,7 @@ from random import choice
 from time import sleep
 
 
-def map_square(list_in: list) -> list:
+def map_square(list_in: list[int]) -> list[int]:
     list_out = [i * i for i in list_in]
     return list_out
 

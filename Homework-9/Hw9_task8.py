@@ -8,6 +8,7 @@
 from time import sleep
 import sys
 
+
 def calc_sum_list(list_in: list) -> int:
     # Вычисление суммы всех элементов списка, включая элементы всех вложенных списков (рекурсия).
     if isinstance(list_in[0], list):
