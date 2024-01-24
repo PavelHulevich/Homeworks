@@ -29,6 +29,6 @@ def reverse_number_entry(number: int) -> None:
 
 
 TEST_LIST = [123, 'A', 'say', {1, 2, 4}, 15.24, 456789, 8, [123, 56], 123456, 789]
-for i in range(0, 10):
+for i in range(0, len(TEST_LIST)):
     reverse_number_entry(randint(11, 9999999))
     reverse_number_entry(TEST_LIST[i])
