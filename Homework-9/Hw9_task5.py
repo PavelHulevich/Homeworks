@@ -1,11 +1,11 @@
 """Задание 5:
 Напишите функцию для вычисления суммы чисел списка с поддержкой вложенных списков с
 помощью рекурсии."""
-from random import choice
 from time import sleep
 
 
 def calc_sum_list(list_in: list) -> int:
+    # Вычисление суммы всех элементов списка, включая элементы всех вложенных списков (рекурсия).
     if isinstance(list_in[0], list):
         list_in[0] = calc_sum_list(list_in[0])
     if len(list_in) < 2:
@@ -41,8 +41,8 @@ def calc_sum_list_entry(list_in: list) -> None:
         print('Неверные входные данные')
 
 
-TEST_LIST = [[2, 2, 2, [3, 5, 6, [3, 5]], [3, 5]], [3, 5, 6, [3, 5]], [3, 5, 6,], 25, [[[3, 4], [3, 4]], [1, 2]],
+TEST_LIST = [[2, 2, 2, [3, 5, 6, [3, 5]], [3, 5]], [3, 5, 6, [3, 5]], [3, 5, 6, ], 25, [[[3, 4], [3, 4]], [1, 2]],
              'say', {2, 3}, 122, False, [[3, 5], [3, 5]], [[3, 'a'], [3, 5]], [[3, 5], ['day', 5]]]
-while True:
-    calc_sum_list_entry(choice(TEST_LIST))
-    sleep(3)
+for index in TEST_LIST:
+    calc_sum_list_entry(index)
+    sleep(1)
