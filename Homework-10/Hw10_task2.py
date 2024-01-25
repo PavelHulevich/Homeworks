@@ -40,9 +40,9 @@ def slicer(func: callable):
 def benchmark(func) -> list:
     def time_exec(list_in: list):
         start = time.time()
-        list_out = func(list_in)
-        for i in range(0, 1000):
+        for i in range(0, 100):
             a = i * i
+            list_out = func(list_in)
         stop = time.time()
         timer = stop - start
         print(timer)
