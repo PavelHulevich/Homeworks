@@ -19,11 +19,11 @@ import time
 class Error(Exception):
     ...
 
-class ListTooLongError(Error):
+class NotValidateData(Error):
     ...
 
 
-def slicer(func: callable):
+def slicer(func: callable(list[int])) -> callable(list[int]):
     # Декоратор
     def cut_list(list_in: list[int]) -> list[int]:
         # Нарезает списки на <= 10 элементов и скармливает func, которая в данном случае - func2.
@@ -59,17 +59,10 @@ def func2(seq: list[int]) -> list[int]:
             return num
         return num * factorial(num - 1)
 
-    try:
-        if len(seq) > 10:
-            raise ListTooLongError
-        else:
-            new_seq = []
-            for number in seq:
-                new_seq.append(factorial(number))
-            return new_seq   # Возвращает новый список с элементами, равными факториалам элементов входного списка.
-    except ListTooLongError:  # Отработка ошибки кастомным классом
-        print('Список слишком длинный')
-        exit(100)
+    new_seq = []
+    for number in seq:
+        new_seq.append(factorial(number))
+    return new_seq   # Возвращает новый список с элементами, равными факториалам элементов входного списка.
 
 
 def func1(lst: list[int]) -> int:
@@ -78,14 +71,20 @@ def func1(lst: list[int]) -> int:
 
 def is_validate_data(list_in: list[int]) -> bool:
     # Проверка валидности исходных данных. На выходе False - если ошибка входных данных.
-    if not isinstance(list_in, list):
-        print('Ошибка. На входе не список')
+    try:
+        if not isinstance(list_in, list):
+            print('Ошибка. На входе не список')
+            raise NotValidateData
+        for number in list_in:
+            if not isinstance(number, int):
+                print('Ошибка. В списке не целые числа')
+                raise NotValidateData
+            if number > 994:
+                print('Ошибка. Число слишком велико для рекурсии')
+                raise NotValidateData
+        return True  # No errors
+    except NotValidateData:
         return False
-    for number in list_in:
-        if not isinstance(number, int):
-            print('Ошибка. В списке не целые числа')
-            return False
-    return True  # No errors
 
 
 def calculate_list_entry(list_in: list[int]) -> None:
@@ -96,7 +95,7 @@ def calculate_list_entry(list_in: list[int]) -> None:
         print('Введены неверные данные')
 
 
-TEST_LIST = [[888, 3, 123, 2, 333, 4, 777, 3, 888, 2, 3, 4, 994, 888, 888,], [1, 2, 3], [2, 3, 4, 5, 6],
+TEST_LIST = [[888, 3, 123, 2, 333, 4, 777, 3, 83, 2, 3, 4, 994, 888, 888,], [999, 2, 3], [2, 3, 4, 5, 6],
              6, 25, 'say', [2, 3, 'day', 5, 6], False, [1, [2, 6], 3], {45, 6}, 25.4]
 for index in TEST_LIST:
     calculate_list_entry(index)
