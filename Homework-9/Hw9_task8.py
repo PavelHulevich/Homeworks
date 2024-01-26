@@ -2,7 +2,7 @@
 Напишите функцию для вычисления суммы чисел списка с поддержкой вложенных списков с
 помощью рекурсии. Программа должна выбрасывать исключение в случае, если в списке
 будет встречаться не числа."""
-from typing import List, Dict, Union, Any
+from typing import List, Any
 from time import sleep
 import sys
 
