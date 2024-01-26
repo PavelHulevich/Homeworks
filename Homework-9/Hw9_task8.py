@@ -2,14 +2,12 @@
 Напишите функцию для вычисления суммы чисел списка с поддержкой вложенных списков с
 помощью рекурсии. Программа должна выбрасывать исключение в случае, если в списке
 будет встречаться не числа."""
-"""Задание 5:
-Напишите функцию для вычисления суммы чисел списка с поддержкой вложенных списков с
-помощью рекурсии."""
+from typing import List, Dict, Union, Any
 from time import sleep
 import sys
 
 
-def calc_sum_list(list_in: list) -> int:
+def calc_sum_list(list_in: List[int]) -> int:
     # Вычисление суммы всех элементов списка, включая элементы всех вложенных списков (рекурсия).
     if isinstance(list_in[0], list):
         list_in[0] = calc_sum_list(list_in[0])
@@ -23,7 +21,7 @@ def calc_sum_list(list_in: list) -> int:
             return 0
 
 
-def is_validate_data(list_in: list) -> bool:
+def is_validate_data(list_in: List[Any]) -> bool:
     # Проверка валидности исходных данных. На выходе False - если ошибка входных данных.
     if not isinstance(list_in, list):
         print('Ошибка. На входе не список')
@@ -41,7 +39,7 @@ def is_validate_data(list_in: list) -> bool:
     return True
 
 
-def calc_sum_list_entry(list_in: list) -> None:
+def calc_sum_list_entry(list_in: List[Any]) -> None:
     print(f'\nВведены денные: {list_in}')
     if is_validate_data(list_in):
         result = calc_sum_list(list_in)
