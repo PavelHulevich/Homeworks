@@ -25,6 +25,7 @@ return new_seq
 def func1() -> int:
  ...
 """
+from typing import List
 
 
 class Error(Exception):
@@ -35,9 +36,9 @@ class ListTooLongError(Error):
     ...
 
 
-def slicer(func):
+def slicer(func: callable(List[int])) -> callable(List[int]):
     # Декоратор
-    def cut_list(list_in: list[int]) -> list[int]:
+    def cut_list(list_in: List[int]) -> List[int]:
         # Нарезает списки на <= 10 элементов и скармливает func, которая в данном случае - func2.
         list_out = []
         while len(list_in) > 10:
@@ -50,7 +51,7 @@ def slicer(func):
 
 
 @slicer
-def func2(seq: list[int]) -> list[int]:
+def func2(seq: List[int]) -> List[int]:
     # Расчет факториала для каждого элемента списка.
     def factorial(num: int) -> int:
         # Расчет факториала рекурсией.
@@ -71,11 +72,11 @@ def func2(seq: list[int]) -> list[int]:
         exit(100)
 
 
-def func1(lst: list[int]) -> int:
+def func1(lst: List[int]) -> int:
     return sum(func2(lst))
 
 
-def is_validate_data(list_in: list[int]) -> bool:
+def is_validate_data(list_in: List[int]) -> bool:
     # Проверка валидности исходных данных. На выходе False - если ошибка входных данных.
     if not isinstance(list_in, list):
         print('Ошибка. На входе не список')
@@ -87,7 +88,7 @@ def is_validate_data(list_in: list[int]) -> bool:
     return True  # No errors
 
 
-def calculate_list_entry(list_in: list[int]) -> None:
+def calculate_list_entry(list_in: List[int]) -> None:
     print('\nВведены значения: ', list_in)
     if is_validate_data(list_in):
         print('Результат расчета списка: ', func1(list_in))

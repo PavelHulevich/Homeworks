@@ -1,12 +1,8 @@
-import sys
-randomList = ['a', 0, 2]
-for entry in randomList:
-    try:
-        print("The entry is", entry)
-        r = 1/int(entry)  #  Если исключений не возникает, блок except пропускается
-                          #  программа продолжает выполнятся обычным образом
-        print(entry, r)
-    except:
-        print("Oops!", sys.exc_info()[0], "occurred.")
-        print("Next entry.")
-        print()
+a = {'a': 1, 'b': 2}
+b = {'c': 3, 'd': 4}
+c = []
+c.append(a)
+c.append(b)
+
+
+print(c)

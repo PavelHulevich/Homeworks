@@ -14,18 +14,21 @@ def func2(seq: List[int]) -> List[int]:
 def func1() -> int:
  ...
 """
+from typing import List
 import time
+
 
 class Error(Exception):
     ...
+
 
 class NotValidateData(Error):
     ...
 
 
-def slicer(func: callable(list[int])) -> callable(list[int]):
+def slicer(func: callable(List[int])) -> callable(List[int]):
     # Декоратор
-    def cut_list(list_in: list[int]) -> list[int]:
+    def cut_list(list_in: List[int]) -> List[int]:
         # Нарезает списки на <= 10 элементов и скармливает func, которая в данном случае - func2.
         list_out = []
         while len(list_in) > 10:
@@ -37,8 +40,9 @@ def slicer(func: callable(list[int])) -> callable(list[int]):
     return cut_list
 
 
-def benchmark(func) -> list:
-    def time_exec(list_in: list):
+def benchmark(func: callable(List[int])) -> callable(List[int]):
+    def time_exec(list_in: List[int]) -> List[int]:
+        list_out = []
         start = time.time()
         for i in range(0, 100):
             a = i * i
@@ -49,9 +53,10 @@ def benchmark(func) -> list:
         return list_out
     return time_exec
 
+
 @slicer
 @benchmark
-def func2(seq: list[int]) -> list[int]:
+def func2(seq: List[int]) -> List[int]:
     # Расчет факториала для каждого элемента списка.
     def factorial(num: int) -> int:
         # Расчет факториала рекурсией.
@@ -69,7 +74,7 @@ def func1(lst: list[int]) -> int:
     return sum(func2(lst))
 
 
-def is_validate_data(list_in: list[int]) -> bool:
+def is_validate_data(list_in: List[int]) -> bool:
     # Проверка валидности исходных данных. На выходе False - если ошибка входных данных.
     try:
         if not isinstance(list_in, list):
@@ -87,7 +92,7 @@ def is_validate_data(list_in: list[int]) -> bool:
         return False
 
 
-def calculate_list_entry(list_in: list[int]) -> None:
+def calculate_list_entry(list_in: List[int]) -> None:
     print('\nВведены значения: ', list_in)
     if is_validate_data(list_in):
         print('Результат расчета списка: ', func1(list_in))
