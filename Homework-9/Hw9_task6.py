@@ -2,6 +2,7 @@
 Напишите функцию для разворота числа (представления числа в обратном порядке) с
 помощью рекурсии. В решении можно пользоваться только типом int и никакими другими
 типами данных."""
+from typing import Any
 from random import randint
 
 
@@ -12,7 +13,7 @@ def reverse_number(integer_in: int, integer_out: int = 0) -> int:
     return reverse_number(integer_in // 10, integer_out)
 
 
-def is_validate_data(number: int) -> bool:
+def is_validate_data(number: Any) -> bool:
     # Проверка валидности исходных данных. На выходе False - если ошибка входных данных.
     if not isinstance(number, int):
         print('Ошибка. На входе не целое число')
@@ -20,7 +21,7 @@ def is_validate_data(number: int) -> bool:
     return True  # No errors
 
 
-def reverse_number_entry(number: int) -> None:
+def reverse_number_entry(number: Any) -> None:
     print(f'\nВведены данные: {number}.  ', end='')
     if is_validate_data(number):
         print('Обратное число: ', reverse_number(number))

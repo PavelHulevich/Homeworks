@@ -10,9 +10,9 @@ modify_list([1, 2, 3], lambda x: x + 1, lambda x: x * 2) должна измен
 • Возведение в квадрат четных чисел
 • Увеличение на 1 нечетных чисел
 • Умножение на 3 простых чисел"""
+from typing import Any
 
-
-def is_validate_data(list_in: list) -> bool:
+def is_validate_data(list_in: Any) -> bool:
     # Проверка валидности исходных данных. На выходе False - если ошибка входных данных.
     if not isinstance(list_in, list):
         print('Ошибка. На входе не список')
@@ -24,7 +24,7 @@ def is_validate_data(list_in: list) -> bool:
     return True  # No errors
 
 
-def modify_list(lst: list, *funcs: callable) -> None:
+def modify_list(lst: Any, *funcs: callable) -> None:
     print('\nВведены данные: ', lst)
     if not is_validate_data(lst):
         print('На входе неверные значения')

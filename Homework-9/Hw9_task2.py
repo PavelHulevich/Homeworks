@@ -4,17 +4,18 @@
 возрастающем порядке не меняя исходный список. В функции нельзя использовать циклы.
 Например, sort_by_length(["apple", "banana", "cherry", "date"]) должна вернуть ["date", "apple",
 "banana", "cherry"]."""
+from typing import List, Any
 from random import choice
 from time import sleep
 
 
-def sort_by_length(lst: list) -> list:
+def sort_by_length(lst: List[str]) -> list:
     list_out = lst.copy()
     list_out.sort(key=len)
     return list_out
 
 
-def is_validate_data(list_in: list) -> bool:
+def is_validate_data(list_in: Any) -> bool:
     # Проверка валидности исходных данных. На выходе False - если ошибка входных данных.
     if not isinstance(list_in, list):
         print('Ошибка. На входе не список')
@@ -26,7 +27,7 @@ def is_validate_data(list_in: list) -> bool:
     return True  # No errors
 
 
-def sort_by_length_entry(list_in: list) -> None:
+def sort_by_length_entry(list_in: Any) -> None:
     print('\nВведен список строк: ', list_in)
     if is_validate_data(list_in):
         print('Результат сортировки:', sort_by_length(list_in))

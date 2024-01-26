@@ -3,6 +3,7 @@
 Напишите рекурсивную функцию power(x, y) возвращающего результат возведения числа x в
 степень y
 """
+from typing import Any
 from random import choice
 from time import sleep
 
@@ -14,7 +15,7 @@ def power(x: (int, float), y: (int, float)) -> (int, float):
         return x * power(x, y-1)
 
 
-def is_validate_data(number_1: (int, float), number_2: (int, float)) -> bool:
+def is_validate_data(number_1: Any, number_2: Any) -> bool:
     # Проверка валидности исходных данных. На выходе False - если ошибка входных данных.
     if not isinstance(number_1,  (int, float)) or not isinstance(number_2,  (int, float)):
         print('Ошибка. На входе не число')
@@ -22,7 +23,7 @@ def is_validate_data(number_1: (int, float), number_2: (int, float)) -> bool:
     return True  # No errors
 
 
-def calculating_degree_number(number_1: (int, float), number_2: (int, float)) -> None:
+def calculating_degree_number(number_1: Any, number_2: Any) -> None:
     print(f'\n Введены значения: "{number_1}"   и  "{number_2}"  ')
     validation_result = is_validate_data(number_1, number_2)
     if validation_result:

@@ -21,7 +21,7 @@ def calc_sum_list(list_in: List[int]) -> int:
             return 0
 
 
-def is_validate_data(list_in: List[Any]) -> bool:
+def is_validate_data(list_in: Any) -> bool:
     # Проверка валидности исходных данных. На выходе False - если ошибка входных данных.
     if not isinstance(list_in, list):
         print('Ошибка. На входе не список')
@@ -39,7 +39,7 @@ def is_validate_data(list_in: List[Any]) -> bool:
     return True
 
 
-def calc_sum_list_entry(list_in: List[Any]) -> None:
+def calc_sum_list_entry(list_in: Any) -> None:
     print(f'\nВведены денные: {list_in}')
     if is_validate_data(list_in):
         result = calc_sum_list(list_in)

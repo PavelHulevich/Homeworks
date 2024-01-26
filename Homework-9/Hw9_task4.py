@@ -7,6 +7,7 @@ case_sensitive равен False, то функция должна игнорир
 считать 'A' и 'a' разными. Например, count_vowels("Hello, world!", case_sensitive=True) должна
 вернуть 2, так как в строке есть только две гласные буквы 'e' и 'o'.
 """
+from typing import Any
 from random import choice
 from time import sleep
 
@@ -21,7 +22,7 @@ def count_vowels(string_in: str, case_sensitive: bool = False) -> int:
     return len(vowels_set)
 
 
-def is_validate_data(string_in: str, flag) -> bool:
+def is_validate_data(string_in: Any, flag: Any) -> bool:
     # Проверка валидности исходных данных. На выходе False - если ошибка входных данных.
     if not isinstance(string_in, str):
         print('Ошибка. На входе не строка')
@@ -32,7 +33,7 @@ def is_validate_data(string_in: str, flag) -> bool:
     return True  # No errors
 
 
-def count_vowels_entry(string_in: str, case_sensitive: bool = False) -> None:
+def count_vowels_entry(string_in: Any, case_sensitive: Any = False) -> None:
     print(f'\nВведены данные : "{string_in}", {case_sensitive}. Регистр букв ', end='')
     if case_sensitive:
         print('РАЗЛИЧАЕТСЯ')

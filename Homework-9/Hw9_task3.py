@@ -4,16 +4,17 @@
 нельзя использовать циклы. Например, map_square([1, 2, 3, 4, 5]) должна вернуть [1, 4, 9, 16,
 25].
 """
+from typing import List, Any
 from random import choice
 from time import sleep
 
 
-def map_square(list_in: list[int]) -> list[int]:
+def map_square(list_in: List[int]) -> list[int]:
     list_out = [i * i for i in list_in]
     return list_out
 
 
-def is_validate_data(list_in: list) -> bool:
+def is_validate_data(list_in: Any) -> bool:
     # Проверка валидности исходных данных. На выходе False - если ошибка входных данных.
     if not isinstance(list_in, list):
         print('Ошибка. На входе не список')
@@ -25,7 +26,7 @@ def is_validate_data(list_in: list) -> bool:
     return True  # No errors
 
 
-def map_square_entry(list_in: list) -> None:
+def map_square_entry(list_in: Any) -> None:
     print('\nВведен список: ', list_in)
     if is_validate_data(list_in):
         print('Квадраты содержимого списка равны списку: ', map_square(list_in))
