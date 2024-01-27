@@ -67,7 +67,7 @@ def get_python() -> requests.Response:
 
 @retry(attempts=3, delayed=False)
 def get_python2() -> requests.Response:
-    return requests.get('https://python.org', timeout=0.03)
+    return requests.get('https://python.org', timeout=0.05)
 
 
 print('\nВызываем функцию "get_python()":')
