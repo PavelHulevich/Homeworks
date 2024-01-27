@@ -1,2 +1,2 @@
-if 0:
-    print(True)
+a = {'foo': 'bar', 'baz': 'quux', 'hello': 'world'}
+print(len(list(a.keys()) + list(a.values())))
