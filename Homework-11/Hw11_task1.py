@@ -9,16 +9,20 @@
 элементов, в случае добавления нового элемента в очередь, в которой уже есть 20 элементов,
 метод должен вернуть исключение. В случае с извлечением элемента из пустой очереди
 метод должен вернуть исключение."""
+from typing import Optional
 
 
 class Error(Exception):
     ...
 
+
 class ListTooLongError(Error):
     ...
 
+
 class ListEmptyError(Error):
     ...
+
 
 class Queue:
     def __init__(self, max_queue):
@@ -34,7 +38,7 @@ class Queue:
         except ListTooLongError:
             print(f'Задача не добавлена. Список задач достиг максимального размера в {self.max_queue} элементов.')
 
-    def extract(self) -> list:
+    def extract(self) -> Optional[str]:
         try:
             if not self.len():
                 raise ListEmptyError
@@ -55,7 +59,7 @@ class Queue:
         return len(self.queue_list)
 
 
-a = Queue(5)
+a = Queue(5)  # Максимальное количество элементов в списке задач.
 a.add('a')
 a.add('b')
 a.add('c')
@@ -64,7 +68,7 @@ a.add('c')
 a.add('c')
 print(a.extract())
 print(a.extract())
-# a.clear()
+a.clear()
 print(a.extract())
 print(a.len())
 
