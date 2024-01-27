@@ -24,11 +24,11 @@ def f4() -> Dict[str, Union[str, int, List[Dict[str, int]]]]:
  return {'a': 'a', 'c': [{'b': 1}, {'d': 2}]}
 f4() # {'a': 'a', 'A': 'A', 'c': [{'b': 1}, {'d': 2}, {'B': 1}, {'D': 2}], 'C': [{'b': 1}, {'d': 2}, {'B': 1}, {'D':
 2}]}"""
-from typing import List, Dict, Union
+from typing import List, Dict, Union, Callable
 
 
-def upper_case(func: callable) -> callable(Dict[str, Union[str, int]]):
-    def upper_fn() -> callable(Dict[str, Union[str, int]]):
+def upper_case(func: Callable) -> Callable[[Dict[Union[str, int]]], Dict[Union[str, int]]]:
+    def upper_fn() -> Callable[[Dict[Union[str, int]]], Dict[Union[str, int]]]:
         def dict_to_upper(dict_in):
             for k, v in dict_in.items():
                 dict_in = dict_in | {k.upper(): v}

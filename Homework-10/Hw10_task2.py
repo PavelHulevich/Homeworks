@@ -14,7 +14,7 @@ def func2(seq: List[int]) -> List[int]:
 def func1() -> int:
  ...
 """
-from typing import List
+from typing import List, Callable
 import time
 
 
@@ -26,7 +26,7 @@ class NotValidateData(Error):
     ...
 
 
-def slicer(func: callable(List[int])) -> callable(List[int]):
+def slicer(func: Callable[[List[int]], List[int]]) -> Callable[[List[int]], List[int]]:
     # Декоратор
     def cut_list(list_in: List[int]) -> List[int]:
         # Нарезает списки на <= 10 элементов и скармливает func, которая в данном случае - func2.
@@ -40,7 +40,7 @@ def slicer(func: callable(List[int])) -> callable(List[int]):
     return cut_list
 
 
-def benchmark(func: callable(List[int])) -> callable(List[int]):
+def benchmark(func: Callable[[List[int]], List[int]]) -> Callable[[List[int]], List[int]]:
     def time_exec(list_in: List[int]) -> List[int]:
         list_out = []
         start = time.time()
@@ -70,7 +70,7 @@ def func2(seq: List[int]) -> List[int]:
     return new_seq   # Возвращает новый список с элементами, равными факториалам элементов входного списка.
 
 
-def func1(lst: list[int]) -> int:
+def func1(lst: List[int]) -> int:
     return sum(func2(lst))
 
 

@@ -15,24 +15,23 @@ def retry(attempts: int, delayed: bool):
 @retry(attempts=3, delayed=True)
 def get_python() -> requests.Response:
  return requests.get('https://python.org', timeout=0.05)
-
 respone = get_python()
 
 @retry(attempts=3, delayed=False)
 def get_python2() -> requests.Response:
  return requests.get('https://python.org', timeout=0.05)
-
 respone = get_python2()"""
-from typing import List, Dict, Union
+
+from typing import Callable
 import requests
 import sys
 from time import sleep
 
 
-def retry(attempts: int, delayed: bool) -> callable:
-    def retry_outer(func: callable) -> callable:
-        def retry_inner() -> None:
-            global answer
+def retry(attempts: int, delayed: bool) -> Callable:
+    def retry_outer(func: Callable) -> Callable[[], requests.Response]:
+        def retry_inner() -> requests.Response:
+            answer = ''
             for attempt in range(0, attempts):
                 try:
                     print(f'Попытка связи № {attempt + 1} ...   ', end='')
@@ -68,7 +67,7 @@ def get_python() -> requests.Response:
 
 @retry(attempts=3, delayed=False)
 def get_python2() -> requests.Response:
-    return requests.get('https://python.org', timeout=0.05)
+    return requests.get('https://python.org', timeout=0.03)
 
 
 print('\nВызываем функцию "get_python()":')
@@ -78,6 +77,3 @@ print(respone)
 print('\nВызываем функцию "get_python2()":')
 respone = get_python2()
 print(respone)
-
-
-

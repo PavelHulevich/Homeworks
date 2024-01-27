@@ -25,7 +25,7 @@ return new_seq
 def func1() -> int:
  ...
 """
-from typing import List
+from typing import List, Callable
 
 
 class Error(Exception):
@@ -36,7 +36,7 @@ class ListTooLongError(Error):
     ...
 
 
-def slicer(func: callable(List[int])) -> callable(List[int]):
+def slicer(func: Callable[[List[int]], List[int]]) -> Callable[[List[int]], List[int]]:
     # Декоратор
     def cut_list(list_in: List[int]) -> List[int]:
         # Нарезает списки на <= 10 элементов и скармливает func, которая в данном случае - func2.
