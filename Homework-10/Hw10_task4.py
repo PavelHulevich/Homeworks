@@ -32,6 +32,7 @@ from time import sleep
 def retry(attempts: int, delayed: bool) -> callable:
     def retry_outer(func: callable) -> callable:
         def retry_inner() -> None:
+            global answer
             for attempt in range(0, attempts):
                 try:
                     print(f'Попытка связи № {attempt + 1} ...   ', end='')
@@ -54,23 +55,29 @@ def retry(attempts: int, delayed: bool) -> callable:
                             continue
                 print('Связь не удалась. Попытки закончились. ', end='')
                 print('Сработало исключение: ', exept_tmp)
+                answer = exept_tmp
+            return answer
         return retry_inner
     return retry_outer
 
 
 @retry(attempts=3, delayed=True)
 def get_python() -> requests.Response:
-    return requests.get('https://python.org', timeout=0.03)
+    return requests.get('https://python.org', timeout=0.05)
 
 
 @retry(attempts=3, delayed=False)
 def get_python2() -> requests.Response:
-    return requests.get('https://python.org', timeout=0.03)
+    return requests.get('https://python.org', timeout=0.05)
+
 
 print('\nВызываем функцию "get_python()":')
 respone = get_python()
+print(respone)
+
 print('\nВызываем функцию "get_python2()":')
 respone = get_python2()
+print(respone)
 
 
 
