@@ -25,51 +25,70 @@ class ListEmptyError(Error):
 
 
 class Queue:
-    def __init__(self, max_queue):
+    def __init__(self, max_queue: int):
         self.max_queue = max_queue
         self.queue_list = []
 
-    def add(self, str_in):
+    def add(self, str_in: str) -> None:
         try:
-            if self.len() >= self.max_queue:
+            if len(self.queue_list) >= self.max_queue:
                 raise ListTooLongError
+            print(f'\nДобавляем задачу: "{str_in}" в очередь')
             self.queue_list.append(str_in)
-            print(str_in, self.queue_list)
         except ListTooLongError:
-            print(f'Задача не добавлена. Список задач достиг максимального размера в {self.max_queue} элементов.')
+            print(f'\nЗадача не добавлена. Список задач достиг максимального размера в {self.max_queue} элементов.')
 
     def extract(self) -> Optional[str]:
+        # На выходе первая задача из списка, или "None" если список пуст.
         try:
-            if not self.len():
+            if not len(self.queue_list):
                 raise ListEmptyError
-            return self.queue_list.pop(0)
+            print(f'\nПолучаем задачу "{self.queue_list[0]}" из начала списка')
+            str_out = self.queue_list.pop(0)
         except ListEmptyError:
-            print('Значение не получено. Список пуст.')
+            print('\nЗадача не получена. Список пуст.')
+            str_out = None
+        return str_out
 
     def is_empty(self) -> bool:
         if len(self.queue_list):
-            return True  # True - если пуст.
+            is_empty_queue = True  # True - если пуст.
         else:
-            return False
+            is_empty_queue = False
+        return is_empty_queue
 
     def clear(self) -> None:
+        print('\nОчистка списка задач')
         self.queue_list.clear()
 
-    def len(self) -> int:
+    def size(self) -> int:
+        print('\nПолучение размера списка задач')
         return len(self.queue_list)
 
 
+# Тестовые вызовы
 a = Queue(5)  # Максимальное количество элементов в списке задач.
 a.add('a')
+print(a.queue_list)
 a.add('b')
+print(a.queue_list)
 a.add('c')
+print(a.queue_list)
 a.add('b')
+print(a.queue_list)
 a.add('c')
+print(a.queue_list)
 a.add('c')
-print(a.extract())
-print(a.extract())
+print(a.queue_list)
+b = (a.extract())
+print(a.queue_list)
+b = (a.extract())
+print(a.queue_list)
+print(a.size())
 a.clear()
-print(a.extract())
-print(a.len())
+print(a.queue_list)
+b = (a.extract())
+print(a.queue_list)
+print(a.size())
 
 

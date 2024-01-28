@@ -10,7 +10,7 @@ int, list, dict. Класс должен иметь атрибут value, кот
 class Immutable(int):
     instance = None
 
-    def __new__(cls, value):
+    def __new__(cls, value: int):
         if cls.instance is None:
             cls.instance = int().__new__(cls, value)
         cls.__value = value
@@ -28,6 +28,7 @@ class Immutable(int):
 
 a = Immutable(65)
 b = Immutable(75)
+print(Immutable(44))
 print(a.get_value())
 print(b.get_value())
 print(id(a), id(b))
