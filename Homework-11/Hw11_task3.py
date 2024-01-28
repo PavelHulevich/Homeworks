@@ -5,23 +5,15 @@ int, list, dict). Для строк сравниваем количество б
 сравниваем сумму ключей и значений. Словари не могут быть вложенными. Класс должен
 поддерживать сравнение перечисленных типов данных между собой.
 """
-from typing import Union, Optional
+from typing import Union, Optional, Any
+from random import choice
 
 
 class Compare:
     OPERATION_CHAR = ('<', '>', '<=', '>=')
 
-    def __init__(self):
-        self.operation = ''
-        self.val_weight = 0
-        self.val1_weight = 0
-        self.val2_weight = 0
-        self.val = 0
-        self.val1 = 0
-        self.val2 = 0
-
-    def is_validate(self, val1: Union[str, list, dict, int], operation: str,
-                    val2: Union[str, list, dict, int]) -> bool:
+    def is_validate(self, val1: Union[str, list, dict, int, Any], operation: Union[str, Any],
+                    val2: Union[str, list, dict, int, Any]) -> bool:
         # Валидация входных данных.
         is_not_error = True  # Флаг ошибки входных данных. По умолчанию "Истина" - ошибок нет.
         if not isinstance(val1, (int, str, list, dict)) or not isinstance(val2, (int, str, list, dict)):
@@ -49,44 +41,48 @@ class Compare:
                 val_weight = len(list(val.keys()) + list(val.values()))
         return val_weight
 
-    def comparing_main(self, val1, operation, val2):
-        val1_weight = self.vals_weight(val1)
-        val2_weight = self.vals_weight(val2)
+    def comparing_statement(self, val1: Union[str, list, dict, int], operation: str,
+                            val2: Union[str, list, dict, int]) -> bool:
+        # Анализ логического утверждения. Сначала вызов вычисления веса переменных, затем происходит сравнение.
+        val1_weight = self.vals_weight(val1)  # Вес переменной.
+        val2_weight = self.vals_weight(val2)  # Вес переменной.
         print(f'Выражение: {str(val1)} {operation} {str(val2)}', end='')
-        compare_result = False
+        is_statement_true = False  # Флаг результата сравнения. По умолчанию - "Ложь".
         match operation:
             case '>':
                 if val1_weight > val2_weight:
-                    compare_result = True
+                    is_statement_true = True
             case '<':
                 if val1_weight < val2_weight:
-                    compare_result = True
+                    is_statement_true = True
             case '>=':
                 if val1_weight >= val2_weight:
-                    compare_result = True
+                    is_statement_true = True
             case '<=':
                 if val1_weight <= val2_weight:
-                    compare_result = True
-        if compare_result:
+                    is_statement_true = True
+        if is_statement_true:
             print(' -- Истинно')
         else:
             print(' -- Ложно')
-        return compare_result
+        return is_statement_true
 
-    def comparing(self, val1: Union[str, list, dict, int], operation: str,
-                  val2: Union[str, list, dict, int]) -> Optional[bool]:
-        self.val1 = val1
-        self.val2 = val2
-        self.operation = operation
-
-        print(f'\nПервый операнд:  {self.val1}. Операция:  "{self.operation}". Второй операнд:  {self.val2}.')
-        if not self.is_validate(val1, operation, val2):
+    def comparing(self, val1: Union[str, list, dict, int, Any], operation: Union[str, Any],
+                  val2: Union[str, list, dict, int, Any]) -> Optional[bool]:
+        # Главная функция, вызываемая экземпляром класса с параметрами.
+        print(f'\nПервый операнд:  {val1}. Операция:  "{operation}". Второй операнд:  {val2}.')
+        if not self.is_validate(val1, operation, val2):  # Проверка валидности данных
             print('Входные данные не верны')
-            compare_result = None
+            compare_result = None   # Если валидация не пройдена.
         else:
-            compare_result = self.comparing_main(val1, operation, val2)
-        return compare_result
+            compare_result = self.comparing_statement(val1, operation, val2)  # Если валидация пройдена
+        return compare_result  # На выходе или bool или None:  -> Optional[bool]
 
+
+# Тестовые прогоны
+TEST_TUPLE = ({'foo': 'bar', 'foo1': 'bar1'}, 388, 44, [45, 85, 3], [25, 75], False, (45, 85, 66), 'say', 'else')
 
 a = Compare()
-print(a.comparing({'foo': 'bar', 'foo1': 'bar1'}, '>', 353))
+for _ in range(0, 10):
+    print('Результат возвращенный методом класса: ', a.comparing(choice(TEST_TUPLE), choice(a.OPERATION_CHAR),
+                                                                 choice(TEST_TUPLE)))
