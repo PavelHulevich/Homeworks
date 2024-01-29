@@ -51,7 +51,7 @@ class Queue:
         return str_out
 
     def is_empty(self) -> bool:
-        if len(self.queue_list):
+        if not len(self.queue_list):
             is_empty_queue = True  # True - если пуст.
         else:
             is_empty_queue = False
@@ -66,29 +66,46 @@ class Queue:
         return len(self.queue_list)
 
 
-# Тестовые вызовы
-a = Queue(5)  # Максимальное количество элементов в списке задач.
-a.add('a')
-print(a.queue_list)
-a.add('b')
-print(a.queue_list)
-a.add('c')
-print(a.queue_list)
-a.add('b')
-print(a.queue_list)
-a.add('c')
-print(a.queue_list)
-a.add('c')
-print(a.queue_list)
-b = (a.extract())
-print(a.queue_list)
-b = (a.extract())
-print(a.queue_list)
-print(a.size())
-a.clear()
-print(a.queue_list)
-b = (a.extract())
-print(a.queue_list)
-print(a.size())
-
-
+TEST_TUPLE = ('task_queue = Queue(5)', 'print(task_queue.queue_list)',
+              'task_queue.add("a")',
+              'task_queue.add("b")', 'print(task_queue.queue_list)',
+              'task_queue.add("c")', 'print(task_queue.queue_list)',
+              'task_queue.add("d")', 'print(task_queue.queue_list)',
+              'task_queue.add("e")', 'print(task_queue.queue_list)',
+              'print(task_queue.extract())', 'print(task_queue.queue_list)',
+              'print(task_queue.extract())', 'print(task_queue.queue_list)',
+              'print(task_queue.size())', 'print(task_queue.queue_list)',
+              'print(task_queue.is_empty())', 'print(task_queue.queue_list)',
+              'task_queue.clear()', 'print(task_queue.queue_list)',
+              'print(task_queue.is_empty())', 'print(task_queue.queue_list)',
+              'print(task_queue.size())', 'print(task_queue.queue_list)',)
+for tupleCur in TEST_TUPLE:
+    print(f'\nВыполняем команду: {tupleCur}')
+    exec(tupleCur)
+#
+# # Тестовые вызовы
+# task_queue = Queue(5)  # Максимальное количество элементов в списке задач.
+# task_queue.add('a')
+# print(task_queue.queue_list)
+# task_queue.add('b')
+# print(task_queue.queue_list)
+# task_queue.add('c')
+# print(task_queue.queue_list)
+# task_queue.add('b')
+# print(task_queue.queue_list)
+# task_queue.add('c')
+# print(task_queue.queue_list)
+# task_queue.add('c')
+# print(task_queue.queue_list)
+# b = (task_queue.extract())
+# print(task_queue.queue_list)
+# b = (task_queue.extract())
+# print(task_queue.queue_list)
+# print(task_queue.size())
+# task_queue.clear()
+# print(task_queue.queue_list)
+# b = (task_queue.extract())
+# print(task_queue.queue_list)
+# print(task_queue.size())
+#
+#
