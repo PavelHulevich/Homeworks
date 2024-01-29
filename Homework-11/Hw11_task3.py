@@ -5,82 +5,56 @@ int, list, dict). Для строк сравниваем количество б
 сравниваем сумму ключей и значений. Словари не могут быть вложенными. Класс должен
 поддерживать сравнение перечисленных типов данных между собой.
 """
-from typing import Union, Optional
-from random import choice
 
 
 class Compare:
-    OPERATION_CHAR = ('<', '>', '<=', '>=')
 
-    def is_validate(self, val1: Union[str, list, dict, int], operation: Union[str],
-                    val2: Union[str, list, dict, int]) -> bool:
-        # Валидация входных данных.
-        is_not_error = True  # Флаг отсутствия ошибки входных данных. По умолчанию "Истина" - ошибок нет.
-        if not isinstance(val1, (int, str, list, dict)) or not isinstance(val2, (int, str, list, dict)):
-            print('Ошибка. Один или оба операнда имеют недопустимый тип данных')
-            is_not_error = False
-        if operation not in self.OPERATION_CHAR:
-            print('Ошибка. Недопустимый символ операции')
-            is_not_error = False
-        return is_not_error
+    def __init__(self, value):
+        self.value = value
 
-    def vals_weight(self, val: Union[str, list, dict, int]) -> int:
-        # Вычисляет вес переменной в зависимости от ее типа и установленных в задании правил.
-        val_weight = 0
-        match val:
-            case str():
-                val_weight = len(val)
-            case list():
-                val_weight = len(val)
-            case int():
-                val_weight = len(str(val))
+    def _get_length(self):
+        weight = 0
+        match self.value:
+            case str() | list():
+                weight = len(self.value)
             case dict():
-                val_weight = len(list(val.keys()) + list(val.values()))
-        return val_weight
+                weight = len(self.value.keys()) * 2
+            case int():
+                weight = len(str(self.value))
+        return weight
 
-    def comparing_statement(self, val1: Union[str, list, dict, int], operation: str,
-                            val2: Union[str, list, dict, int]) -> bool:
-        # Анализ логического утверждения. Сначала вызов вычисления веса переменных, затем сравнение.
-        val1_weight = self.vals_weight(val1)  # Вес переменной_1.
-        val2_weight = self.vals_weight(val2)  # Вес переменной_2.
-        print(f'Выражение: {str(val1)} {operation} {str(val2)}', end='')
-        is_statement_true = False  # Флаг результата сравнения. По умолчанию - "Ложь".
-        match operation:
-            case '>':
-                if val1_weight > val2_weight:
-                    is_statement_true = True
-            case '<':
-                if val1_weight < val2_weight:
-                    is_statement_true = True
-            case '>=':
-                if val1_weight >= val2_weight:
-                    is_statement_true = True
-            case '<=':
-                if val1_weight <= val2_weight:
-                    is_statement_true = True
-        if is_statement_true:
-            print(' -- Истинно')
+    def __gt__(self, other):
+        if self._get_length() > other._get_length():
+            return True
         else:
-            print(' -- Ложно')
-        return is_statement_true
+            return False
 
-    def comparing(self, val1: Union[str, list, dict, int], operation: Union[str],
-                  val2: Union[str, list, dict, int]) -> Optional[bool]:
-        # Главная функция, вызываемая экземпляром класса с параметрами.
-        print(f'\nПервый операнд:  {val1}. Операция:  "{operation}". Второй операнд:  {val2}.')
-        if not self.is_validate(val1, operation, val2):  # Проверка валидности данных
-            print('Входные данные не верны')
-            compare_result = None   # Если валидация не пройдена.
+    def __lt__(self, other):
+        if self._get_length() < other._get_length():
+            return True
         else:
-            compare_result = self.comparing_statement(val1, operation, val2)  # Если валидация пройдена
-        return compare_result  # На выходе или bool или None:  -> Optional[bool]
+            return False
+
+    def __le__(self, other):
+        if self._get_length() <= other._get_length():
+            return True
+        else:
+            return False
+
+    def __ge__(self, other):
+        if self._get_length() >= other._get_length():
+            return True
+        else:
+            return False
 
 
-# Тестовые прогоны
-TEST_TUPLE = ({'foo': 'bar', 'foo1': 'bar1'}, 388, 44, [45, 85, 3], [25, 75], (45, 85, 66), 'say', 'else')
-TEST_OPERATION_CHAR = ('<', '>', '<=', '>=', 'a', 25, [1, 2], 75, 4)
+d = Compare({'a': 1})
+s = Compare('sty')
+print(d >= s)
+print(d <= s)
+print(d > s)
+print(d > s)
 
-logical_expression = Compare()
-for _ in range(0, 20):
-    b = (logical_expression.comparing(choice(TEST_TUPLE), choice(TEST_OPERATION_CHAR), choice(TEST_TUPLE)))
-    print('Результат возвращенный методом класса: ', b)
+
+
+

@@ -11,8 +11,7 @@ class Immutable(int):
     instance = None
 
     def __new__(cls, value: int):
-        if cls.instance is None:
-            cls.instance = int().__new__(cls, value)
+        cls.instance = int().__new__(cls, value)
         cls.__value = value
         return cls.instance
 
