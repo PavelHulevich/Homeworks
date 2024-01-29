@@ -85,7 +85,7 @@ class Pounds:
     def __call__(self) -> float:
         return self.value * 0.45
 
-    def __add__(self, other: ) -> Optional[float]:
+    def __add__(self, other) -> Optional[float]:
         if type(other).__name__ == 'Kilograms':
             value_out = self.value + other.get_value() * 2.2
         elif type(other).__name__ == 'Pounds':
