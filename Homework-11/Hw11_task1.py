@@ -69,8 +69,9 @@ class Queue:
 TEST_TUPLE = ('task_queue = Queue(5)', 'print(task_queue.queue_list)',
               'task_queue.add("a")',
               'task_queue.add("b")', 'print(task_queue.queue_list)',
-              'task_queue.add("c")', 'print(task_queue.queue_list)',
-              'task_queue.add("d")', 'print(task_queue.queue_list)',
+              'task_queue.add(25)', 'print(task_queue.queue_list)',
+              'task_queue.add({1, 2})', 'print(task_queue.queue_list)',
+              'task_queue.add("e")', 'print(task_queue.queue_list)',
               'task_queue.add("e")', 'print(task_queue.queue_list)',
               'print(task_queue.extract())', 'print(task_queue.queue_list)',
               'print(task_queue.extract())', 'print(task_queue.queue_list)',
@@ -78,7 +79,7 @@ TEST_TUPLE = ('task_queue = Queue(5)', 'print(task_queue.queue_list)',
               'print(task_queue.is_empty())', 'print(task_queue.queue_list)',
               'task_queue.clear()', 'print(task_queue.queue_list)',
               'print(task_queue.is_empty())', 'print(task_queue.queue_list)',
-              'print(task_queue.size())', 'print(task_queue.queue_list)',)
+              'print(task_queue.extract())', 'print(task_queue.queue_list)',)
 for tupleCur in TEST_TUPLE:
     print(f'\nВыполняем команду: {tupleCur}')
     exec(tupleCur)
