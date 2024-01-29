@@ -80,9 +80,9 @@ class Compare:
 
 
 # Тестовые прогоны
-TEST_TUPLE = ({'foo': 'bar', 'foo1': 'bar1'}, 388, 44, [45, 85, 3], [25, 75], False, (45, 85, 66), 'say', 'else')
+TEST_TUPLE = ({'foo': 'bar', 'foo1': 'bar1'}, 388, 44, [45, 85, 3], [25, 75], (45, 85, 66), 'say', 'else')
 
 a = Compare()
 for _ in range(0, 10):
-    print('Результат возвращенный методом класса: ', a.comparing(choice(TEST_TUPLE), choice(a.OPERATION_CHAR),
-                                                                 choice(TEST_TUPLE)))
+    b = (a.comparing(choice(TEST_TUPLE), choice(a.OPERATION_CHAR), choice(TEST_TUPLE)))
+    print('Результат возвращенный методом класса: ', b)

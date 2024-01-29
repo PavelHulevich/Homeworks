@@ -1,2 +1,4 @@
-a = {'foo': 'bar', 'baz': 'quux', 'hello': 'world'}
-print(len(list(a.keys()) + list(a.values())))
+a = range(0, 1000)
+
+if 100.1 in a:
+    print(1)
