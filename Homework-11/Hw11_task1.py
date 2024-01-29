@@ -82,30 +82,3 @@ TEST_TUPLE = ('task_queue = Queue(5)', 'print(task_queue.queue_list)',
 for tupleCur in TEST_TUPLE:
     print(f'\nВыполняем команду: {tupleCur}')
     exec(tupleCur)
-#
-# # Тестовые вызовы
-# task_queue = Queue(5)  # Максимальное количество элементов в списке задач.
-# task_queue.add('a')
-# print(task_queue.queue_list)
-# task_queue.add('b')
-# print(task_queue.queue_list)
-# task_queue.add('c')
-# print(task_queue.queue_list)
-# task_queue.add('b')
-# print(task_queue.queue_list)
-# task_queue.add('c')
-# print(task_queue.queue_list)
-# task_queue.add('c')
-# print(task_queue.queue_list)
-# b = (task_queue.extract())
-# print(task_queue.queue_list)
-# b = (task_queue.extract())
-# print(task_queue.queue_list)
-# print(task_queue.size())
-# task_queue.clear()
-# print(task_queue.queue_list)
-# b = (task_queue.extract())
-# print(task_queue.queue_list)
-# print(task_queue.size())
-#
-#
