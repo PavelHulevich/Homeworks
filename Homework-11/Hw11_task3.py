@@ -5,7 +5,7 @@ int, list, dict). Для строк сравниваем количество б
 сравниваем сумму ключей и значений. Словари не могут быть вложенными. Класс должен
 поддерживать сравнение перечисленных типов данных между собой.
 """
-from typing import Union
+from typing import Union, Self
 
 
 class Compare:
@@ -24,25 +24,25 @@ class Compare:
                 weight = len(str(self.value))
         return weight
 
-    def __gt__(self, other: Union[str, int, list, dict] ) -> bool:
+    def __gt__(self, other: Self) -> bool:
         if self._get_length() > other._get_length():
             return True
         else:
             return False
 
-    def __lt__(self, other: Union[str, int, list, dict]) -> bool:
+    def __lt__(self, other: Self) -> bool:
         if self._get_length() < other._get_length():
             return True
         else:
             return False
 
-    def __le__(self, other: Union[str, int, list, dict]) -> bool:
+    def __le__(self, other: Self) -> bool:
         if self._get_length() <= other._get_length():
             return True
         else:
             return False
 
-    def __ge__(self, other: Union[str, int, list, dict]) -> bool:
+    def __ge__(self, other: Self) -> bool:
         if self._get_length() >= other._get_length():
             return True
         else:
