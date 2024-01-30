@@ -9,7 +9,7 @@
 возвращает исключение. Информационная строка об объекте класса __repr__ должна
 возвращать значение, единицы измерения килограмм или фунт, значение в граммах или
 унциях."""
-from typing import Optional
+from typing import Optional, Union, Self
 
 
 class Kilograms:
@@ -85,7 +85,7 @@ class Pounds:
     def __call__(self) -> float:
         return self.value * 0.45
 
-    def __add__(self, other) -> Optional[float]:
+    def __add__(self, other: Union[Self, Kilograms]) -> Optional[float]:
         if type(other).__name__ == 'Kilograms':
             value_out = self.value + other.get_value() * 2.2
         elif type(other).__name__ == 'Pounds':
