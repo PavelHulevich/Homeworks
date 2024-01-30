@@ -14,7 +14,6 @@ class Compare:
         self.value = value
 
     def _get_length(self) -> int:
-        weight = 0
         match self.value:
             case str() | list():
                 weight = len(self.value)

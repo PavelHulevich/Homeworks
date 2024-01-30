@@ -8,13 +8,10 @@ int, list, dict. Класс должен иметь атрибут value, кот
 
 
 class Immutable(int):
-    instance = None
 
-    def __new__(cls, value: int):
-        cls.instance = int().__new__(cls, value)
+    def __new__(cls, value):
         cls.__value = value
-        return cls.instance
-
+        return int.__new__(cls, abs(value))
     def get_value(self) -> int:
         return self.__value
 
@@ -26,10 +23,10 @@ class Immutable(int):
 
 
 a = Immutable(65)
-b = Immutable(75)
-print(Immutable(44))
-print(a.get_value())
+b = Immutable(-75)
+# print(a.get_value())
 print(b.get_value())
+print(b, a)
 print(id(a), id(b))
 
 
