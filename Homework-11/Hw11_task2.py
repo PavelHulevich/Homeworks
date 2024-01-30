@@ -7,11 +7,11 @@ int, list, dict. Класс должен иметь атрибут value, кот
 инициализатор, установка значения должна осуществляться в методе new."""
 
 
-class Immutable(int):
+class Immutable():
 
     def __new__(cls, value):
         cls.__value = value
-        return int.__new__(cls)
+        return super().__new__(cls)
 
     def get_value(self) -> int:
         return self.__value
