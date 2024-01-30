@@ -11,7 +11,8 @@ class Immutable(int):
 
     def __new__(cls, value):
         cls.__value = value
-        return int.__new__(cls, abs(value))
+        return int.__new__(cls)
+
     def get_value(self) -> int:
         return self.__value
 
@@ -24,9 +25,9 @@ class Immutable(int):
 
 a = Immutable(65)
 b = Immutable(-75)
-# print(a.get_value())
+print(a.get_value())
 print(b.get_value())
-print(b, a)
+
 print(id(a), id(b))
 
 
