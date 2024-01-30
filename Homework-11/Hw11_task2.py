@@ -13,7 +13,7 @@ class Immutable():
         cls.__value = value
         return super().__new__(cls)
 
-    def get_value(self) -> int:
+    def get_value(self):
         return self.__value
 
     def __setattr__(self, key, value):
