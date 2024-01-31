@@ -120,7 +120,7 @@ TEST_TUPLE_KG = ('weight_kg_1 = Kilograms(5)', 'weight_kg_2 = Kilograms(1)',
                  'print(weight_kg_1 - weight_kg_1)', 'print(weight_kg_1 - weight_kg_2)',
                  'print(weight_kg_1 - weight_lb_1)', 'print(weight_kg_1 - 4)',
                  'print(weight_kg_1 - 10)', 'print(weight_kg_1 + 1000)',
-                 'print(weight_kg_1.__repr__())')
+                 'print(weight_kg_1)')
 for tupleCur in TEST_TUPLE_KG:
     print(f'\nВыполняем команду: {tupleCur}')
     exec(tupleCur)
@@ -129,9 +129,7 @@ print('\n===============ТЕСТИРОВАНИЕ КЛАССА Pounds============
 TEST_TUPLE_LB = ('print(weight_lb_1 + weight_lb_2)', 'print(weight_lb_1 - weight_lb_2)',
                  'print(weight_lb_1 + weight_kg_2)', 'print(weight_lb_1 - weight_kg_2)',
                  'print(weight_lb_1 + weight_kg_1)', 'print(weight_lb_1 - 15)',
-                 'print(weight_lb_2.__repr__())')
+                 'print(weight_lb_2)')
 for tupleCur in TEST_TUPLE_LB:
     print(f'\nВыполняем команду: {tupleCur}')
     exec(tupleCur)
-
-
