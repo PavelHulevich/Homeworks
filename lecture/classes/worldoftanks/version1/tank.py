@@ -1,0 +1,2 @@
+class Panzer:
+    pass
