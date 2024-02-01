@@ -23,7 +23,6 @@ class ListTooLongError(Error):
 class ListEmptyError(Error):
     ...
 
-
 class Queue:
     def __init__(self, max_queue: int):
         self.max_queue = max_queue
@@ -64,7 +63,6 @@ class Queue:
     def size(self) -> int:
         print('\nПолучение размера списка задач')
         return len(self.queue_list)
-
 
 TEST_TUPLE = ('task_queue = Queue(5)', 'print(task_queue.queue_list)',
               'task_queue.add("a")',

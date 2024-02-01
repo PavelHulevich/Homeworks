@@ -24,7 +24,8 @@ class Compare:
         return weight
 
     def __gt__(self, other: Self) -> bool:
-        if self._get_length() > other._get_length():
+        length_ = self._get_length() > other._get_length()
+        if length_:
             return True
         else:
             return False
