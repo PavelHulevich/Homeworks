@@ -47,9 +47,11 @@ AuthService, который будет отвечать за регистрац�
 
 
 class User:
-    def __init__(self, name, **kwargs):
+    def __init__(self, name: str, email: str, password: str, role: str):
         self.name = name
-        self.kwargs = kwargs
+        self.email = email
+        self.password = password
+        self.role = role
 
     def register(self) -> None:
         AuthService.register(self)
@@ -60,14 +62,14 @@ class User:
     def logout(self) -> None:
         AuthService.logout(self)
 
-    def send_email(self) -> None:
-        EmailService.send_email(self)
+    def send_email(self, message: str, subject: str, recipients: str) -> None:
+        EmailService.send_email(self, message, subject, recipients)
 
-    def generate_report(self) -> None:
-        ReportService.generate_report(self)
+    def generate_report(self, data: str) -> None:
+        ReportService.generate_report(self, data)
 
-    def change_password(self) -> None:
-        print(f"{self.name} is changed password {self.password} to {self.other}")
+    def change_password(self, new_password: str) -> None:
+        print(f"{self.name} is changed password {self.password} to {new_password}")
 
 
 class AuthService:
@@ -82,18 +84,18 @@ class AuthService:
 
 
 class EmailService:
-    def send_email(self: User) -> None:
-        print(f"{self.name} is sent message {self.other[0]} with {self.other[1]} to {self.other[2]}")
+    def send_email(self: User, message: str, subject: str, recipients: str) -> None:
+        print(f"{self.name} is sent message {message} with {subject} to {recipients}")
 
 
 class ReportService:
-    def generate_report(self: User) -> None:
-        print(f"{self.name} is generated report with data {self.kwargs['data']}")
+    def generate_report(self: User, data: str) -> None:
+        print(f"{self.name} is generated report with data {data}")
 
 
-a = User('Dave', data='54545')
-a.generate_report()
-# a.send_email()
-
+a = User('Dave', 'wwwww@eee.rt', '11112222', 'Worker')
+a.generate_report('22334')
+a.send_email('xsxsxsxx', '555555', '3322323')
+a.change_password('123321')
 
 
