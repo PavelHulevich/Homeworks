@@ -73,24 +73,29 @@ class User:
 
 
 class AuthService:
-    def register(self: User) -> None:
-        print(f"{self.name} is registered with email {self.email} and password {self.password}")
+    @staticmethod
+    def register(user: User) -> None:
+        print(f"{user.name} is registered with email {user.email} and password {user.password}")
 
-    def login(self: User) -> None:
-        print(f"{self.name} is logged in with email {self.email} and password {self.password}")
+    @staticmethod
+    def login(user: User) -> None:
+        print(f"{user.name} is logged in with email {user.email} and password {user.password}")
 
-    def logout(self: User) -> None:
-        print(f"{self.name} is logged out")
+    @staticmethod
+    def logout(user: User) -> None:
+        print(f"{user.name} is logged out")
 
 
 class EmailService:
-    def send_email(self: User, message: str, subject: str, recipients: str) -> None:
-        print(f"{self.name} is sent message {message} with {subject} to {recipients}")
+    @staticmethod
+    def send_email(user: User, message: str, subject: str, recipients: str) -> None:
+        print(f"{user.name} is sent message {message} with {subject} to {recipients}")
 
 
 class ReportService:
-    def generate_report(self: User, data: str) -> None:
-        print(f"{self.name} is generated report with data {data}")
+    @staticmethod
+    def generate_report(user: User, data: str) -> None:
+        print(f"{user.name} is generated report with data {data}")
 
 
 a = User('Dave', 'wwwww@eee.rt', '11112222', 'Worker')
