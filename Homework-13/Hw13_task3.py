@@ -30,52 +30,52 @@ from abc import ABC
 
 
 class Animal(ABC):
-    def __init__(self, name):
+    def __init__(self, name: str):
         self.name = name
 
-    def eat(self):
+    def eat(self) -> None:
         print(f'{self.name} is eating')
 
 
 class FlyingAnimal(Animal):
-    def __init__(self, name, wingspan):
+    def __init__(self, name: str, wingspan: float):
         super().__init__(name)
         self.wingspan = wingspan
 
-    def fly(self):
+    def fly(self) -> None:
         print(f"{self.name} is flying with wingspan {self.wingspan}")
 
-    def eat(self):
+    def eat(self) -> None:
         print(f'{self.name} is eating feed')
 
 
 class Bird(FlyingAnimal):
-    def __init__(self, name, wingspan):
+    def __init__(self, name: str, wingspan: float):
         super().__init__(name, wingspan)
 
-    def fly(self):
+    def fly(self) -> None:
         print(f"{self.name} - bird, is fast flying in the day with wingspan {self.wingspan}")
 
-    def eat(self):
+    def eat(self) -> None:
         print(f'{self.name} is eating grain')
 
 
 class Bat(FlyingAnimal):
-    def __init__(self, name, wingspan):
+    def __init__(self, name: str, wingspan: float):
         super().__init__(name, wingspan)
 
-    def fly(self):
+    def fly(self) -> None:
         print(f"{self.name} - bat, is slow flying in the night with wingspan {self.wingspan}")
 
-    def eat(self):
+    def eat(self) -> None:
         print(f'{self.name} is eating insect')
 
 
 class Penguin(Animal):
-    def __init__(self, name):
+    def __init__(self, name: str):
         super().__init__(name)
 
-    def eat(self):
+    def eat(self) -> None:
         print(f'{self.name} is eating fish')
 
 
