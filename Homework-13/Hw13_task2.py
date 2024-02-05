@@ -34,7 +34,7 @@ from abc import ABC, abstractmethod
 
 
 class Employee(ABC):
-    def __init__(self, type,):
+    def __init__(self, type):
         self.type = type
 
     @abstractmethod
@@ -52,4 +52,21 @@ class Manager(Employee):
         return self.base_salary * 1.2
 
 
+class Developer(Employee):
+    def __init__(self, name, base_salary):
+        super().__init__('manager')
+        self.name = name
+        self.base_salary = base_salary
 
+    def calculate_salary(self):
+        return self.base_salary * 1.1
+
+
+class Tester(Employee):
+    def __init__(self, name, base_salary):
+        super().__init__('manager')
+        self.name = name
+        self.base_salary = base_salary
+
+    def calculate_salary(self):
+        return self.base_salary * 1.3
