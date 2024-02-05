@@ -29,9 +29,97 @@ call(), send_message(), take_photo() и play_game().
 разные комбинации интерфейсов в зависимости от их возможностей. Например, BasicPhone
 будет реализовывать только CallPhone и MessagePhone, CameraPhone будет реализовывать
 CallPhone, MessagePhone и PhotoPhone, а SmartPhone будет реализовывать все интерфейсы"""
+from abc import ABC, abstractmethod
 
 
-class Phone:
+class Phone(ABC):
     def __init__(self, model, number):
         self.model = model
         self.number = number
+
+
+class CallPhone(Phone):
+    def __init__(self, model, number):
+        super().__init__(model, number)
+
+    @abstractmethod
+    def call(self, other_number: str) -> None:
+        ...
+
+
+class MessagePhone(Phone):
+    def __init__(self, model, number):
+        super().__init__(model, number)
+
+    @abstractmethod
+    def send_message(self, other_number: str, text: str) -> None:
+        ...
+
+
+class PhotoPhone(Phone):
+    def __init__(self, model, number):
+        super().__init__(model, number)
+
+    @abstractmethod
+    def take_photo(self) -> None:
+        ...
+
+
+class GamePhone(Phone):
+    def __init__(self, model, number):
+        super().__init__(model, number)
+
+    @abstractmethod
+    def play_game(self, game: str) -> None:
+        ...
+
+
+class BasicPhone(CallPhone, MessagePhone):
+    def __init__(self, model, number):
+        super().__init__(model, number)
+
+    def call(self, other_number: str) -> None:
+        print(f"Calling {other_number} from {self.number}")
+
+    def send_message(self, other_number: str, text: str) -> None:
+        print(f"Sending '{text}' to {other_number} from {self.number}")
+
+
+class CameraPhone(CallPhone, MessagePhone, PhotoPhone):
+    def __init__(self, model, number):
+        super().__init__(model, number)
+
+    def call(self, other_number: str) -> None:
+        print(f"Calling {other_number} from {self.number}")
+
+    def send_message(self, other_number: str, text: str) -> None:
+        print(f"Sending '{text}' to {other_number} from {self.number}")
+
+    def take_photo(self) -> None:
+        print(f"Taking a photo with {self.model}")
+
+
+class SmartPhone(CallPhone, MessagePhone, PhotoPhone, GamePhone):
+    def __init__(self, model, number):
+        super().__init__(model, number)
+
+    def call(self, other_number: str) -> None:
+        print(f"Calling {other_number} from {self.number}")
+
+    def send_message(self, other_number: str, text: str) -> None:
+        print(f"Sending '{text}' to {other_number} from {self.number}")
+
+    def take_photo(self) -> None:
+        print(f"Taking a photo with {self.model}")
+
+    def play_game(self, game: str) -> None:
+        print(f"Playing {game} on {self.model}")
+
+
+phone1 = CameraPhone('+375267894525', 'ZTE')
+phone1.call('+37545856977458')
+
+phone2 = SmartPhone('+375458569952', 'Realme')
+phone2.play_game('Pithon')
+
+phone2.take_photo()
