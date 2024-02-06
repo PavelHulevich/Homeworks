@@ -27,7 +27,7 @@ connect() и save(), которые будут работать с базой д
 знать о деталях реализации хранилища, а будет использовать общий интерфейс."""
 from __future__ import annotations
 from abc import ABC, abstractmethod
-from typing import List
+from typing import List, Union, Type
 
 
 class Storage(ABC):
@@ -47,7 +47,6 @@ class Database(Storage):
         print('Подключаемся к базе данных для сохранение')
 
     def save(self: Order) -> None:
-        self.connect()
         print(f'Сохраняем заказ {self} в базе данных')
 
 
@@ -67,9 +66,9 @@ class Order:
     def __str__(self):
         return f'Заказ: {self.items} на сумму: {self.total} '
 
-    def process(self, storage):
+    def process(self, storage: Type[File, Database]):
         storage.save(self)
 
 
 a = Order(['wdwd', 'zazaz', 'rfrfrfr'], 125)
-a.process(File)
+a.process(Database)
