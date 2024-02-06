@@ -27,7 +27,7 @@ connect() и save(), которые будут работать с базой д
 знать о деталях реализации хранилища, а будет использовать общий интерфейс."""
 from __future__ import annotations
 from abc import ABC, abstractmethod
-from typing import List, Union, Type
+from typing import List, Type
 
 
 class Storage(ABC):
