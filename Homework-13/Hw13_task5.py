@@ -66,7 +66,7 @@ class Order:
     def __str__(self):
         return f'Заказ: {self.items} на сумму: {self.total} '
 
-    def process(self, storage: Type[File, Database]):
+    def process(self, storage: Type[Storage]):
         storage.save(self)
 
 
