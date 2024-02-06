@@ -43,11 +43,11 @@ class Database(Storage):
     def __init__(self):
         super().__init__()
 
-    @staticmethod
-    def connect() -> None:
+    def connect(self) -> None:
         print('Подключаемся к базе данных для сохранение')
 
     def save(self: Order) -> None:
+        self.connect()
         print(f'Сохраняем заказ {self} в базе данных')
 
 
@@ -67,10 +67,9 @@ class Order:
     def __str__(self):
         return f'Заказ: {self.items} на сумму: {self.total} '
 
-    def process(self):
-        Database.connect()
-        Database.save(self)
+    def process(self, storage):
+        storage.save(self)
 
 
 a = Order(['wdwd', 'zazaz', 'rfrfrfr'], 125)
-a.process()
+a.process(File)
