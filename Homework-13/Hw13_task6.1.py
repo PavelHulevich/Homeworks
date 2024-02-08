@@ -49,6 +49,7 @@ class StudentDTO:
         str_in_set = set(str_in)
         return str_in_set == (str_in_set & alphabet_set)
 
+
 try:
     user_dto = StudentDTO(**{'first_name': 'John', 'last_name': 'Doe', 'age': 19, 'course': 1, 'average_score': 100})
 except ValueError:
