@@ -11,9 +11,6 @@ DTO с использованием четырех разных способов
 # DTO с использованием pydantic
 from pydantic import BaseModel, validator, ValidationError
 
-ALPHABET = 'abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-ALPHABET_UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-
 
 class StudentDTO(BaseModel):
     last_name: str
@@ -42,6 +39,8 @@ class StudentDTO(BaseModel):
 
     @validator('last_name', 'first_name')
     def validate_names(cls, value: str) -> str:
+        ALPHABET = 'abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        ALPHABET_UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
         alphabet_set = set(ALPHABET)
         str_in_set = set(value)
         if str_in_set != (str_in_set & alphabet_set):
