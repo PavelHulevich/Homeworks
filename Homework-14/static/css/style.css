@@ -1,0 +1,37 @@
+.l0 {
+    text-align: center;
+    line-height: 64px;
+    font-size: 36px;
+    color: white;
+    background-color: #333;
+}
+
+.l1 {
+
+    line-height: 64px;
+    font-size: 30px;
+    color: white;
+    background-color: #666
+    }
+
+.l2 {
+    font-weight: 900;
+    line-height: 64px;
+    font-size: 28px;
+    }
+
+.l3 {
+    font-weight: 500;
+    line-height: 32px;
+    font-size: 24px;
+    }
+
+.parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.child {
+  border: 2px solid black;
+}
