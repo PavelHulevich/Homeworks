@@ -1,0 +1,9 @@
+p {
+  margin-top: 300px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 80px;
+}
+p {
+  margin: 25px 50px 75px 100px;
+}
