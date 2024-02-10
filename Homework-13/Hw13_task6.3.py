@@ -60,7 +60,7 @@ try:
 except ValueError:
     print('Ошибка валидации')
 else:
-    user_dto = StudentDTO(student)
+    user_dto = StudentDTO(**student)
     print(user_dto)
 
 

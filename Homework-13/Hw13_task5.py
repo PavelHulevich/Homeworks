@@ -46,7 +46,7 @@ class Database(Storage):
     def connect(self) -> None:
         print('Подключаемся к базе данных для сохранение')
 
-    def save(self: Order) -> None:
+    def save(self, order: Order) -> None:
         print(f'Сохраняем заказ {self} в базе данных')
 
 
@@ -66,9 +66,9 @@ class Order:
     def __str__(self):
         return f'Заказ: {self.items} на сумму: {self.total} '
 
-    def process(self, storage: Type[Storage]):
+    def process(self, storage: Storage):
         storage.save(self)
 
 
 a = Order(['wdwd', 'zazaz', 'rfrfrfr'], 125)
-a.process(Database)
+a.process(Database())
