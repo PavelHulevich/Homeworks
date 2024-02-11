@@ -35,7 +35,7 @@ class Storage(ABC):
         ...
 
     @abstractmethod
-    def save(self) -> None:
+    def save(self, order: Order) -> None:
         ...
 
 
@@ -54,7 +54,7 @@ class File(Storage):
     def __init__(self):
         super().__init__()
 
-    def save(self: Order) -> None:
+    def save(self, order: Order) -> None:
         print(f'Сохраняем заказ {self} в файл')
 
 
