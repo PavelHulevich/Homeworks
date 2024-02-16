@@ -5,9 +5,9 @@ services:
     image: postgres:14
     restart: always
     environment:
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
-      POSTGRES_DB: mydatabase
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: db_Hw_16
     ports:
       - "5432:5432"
     healthcheck:
@@ -22,24 +22,12 @@ services:
           cpus: '1'
           memory: 4G
 
-  rabbitmq:
-    image: rabbitmq:latest
-    restart: always
-    environment:
-      RABBITMQ_DEFAULT_USER: guest
-      RABBITMQ_DEFAULT_PASS: guest
-
-  redis:
-    image: redis:latest
-    restart: always
-
   web:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"
+      - "5000:8000"
     depends_on:
       - postgres
-      - rabbitmq
-      - redis
+

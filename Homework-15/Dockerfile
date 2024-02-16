@@ -3,7 +3,7 @@ FROM python:3.11
 
 ENV PYTHONUNBUFFERED 1
 # Устанавливаем рабочую директорию внутри контейнера
-WORKDIR /app/src
+WORKDIR /app
 ENV    PATH="${PATH}:/root/.local/bin" \
         POETRY_VIRTUALENVS_CREATE=False \
     PYTHONPATH="${PYTHONPATH}:/opt:/opt/src"
@@ -12,7 +12,7 @@ ENV    PATH="${PATH}:/root/.local/bin" \
 
 # Устанавливаем зависимости poetry
 RUN curl -sSL https://install.python-poetry.org | python -
-COPY poetry.lock pyproject.toml /app/src/
+COPY poetry.lock pyproject.toml /app/
 
 RUN poetry install
 
@@ -24,4 +24,4 @@ RUN apt-get update && apt-get install -y htop vim
 COPY . .
 
 # Выполняем команду для запуска Django сервера
-CMD ["python", "simple_app/manage.py", "runserver", "127.0.0.1:5000"]
+CMD ["python", "simple_app/manage.py", "runserver", "0.0.0.0:5000"]
