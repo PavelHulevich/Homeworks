@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'spaceoftanks.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db_Hw_16',
+        'NAME': 'dbw',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': 'localhost',

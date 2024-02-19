@@ -23,4 +23,4 @@ RUN apt-get update && apt-get install -y htop vim
 COPY . .
 
 # Выполняем команду для запуска Django сервера
-CMD ["python", "simple_app/manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "simple_app/manage.py", "runserver", "127.0.0.1:8000"]

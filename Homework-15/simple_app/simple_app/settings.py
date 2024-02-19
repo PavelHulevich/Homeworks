@@ -84,15 +84,15 @@ WSGI_APPLICATION = 'simple_app.wsgi.application'
 #         'ENGINE': 'django.db.backends.sqlite3',
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
-# }
+# }'django.db.backends.ву'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db_Hw_16',
+        'NAME': 'dbHw',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'PORT': '5433',
     }
 }
 
