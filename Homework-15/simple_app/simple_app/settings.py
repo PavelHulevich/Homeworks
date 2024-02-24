@@ -37,11 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'hello',
+    # 'simple_app.hello',
     'players',
     'vehicles',
     'achievements',
-
 
 ]
 
@@ -88,11 +87,11 @@ WSGI_APPLICATION = 'simple_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dbHw',
+        'NAME': 'postgres',
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
-        'PORT': '5433',
+        'HOST': 'postgres',
+        'PORT': '5432',
     }
 }
 
