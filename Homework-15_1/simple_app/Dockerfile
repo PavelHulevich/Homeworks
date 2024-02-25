@@ -6,13 +6,14 @@ ENV PYTHONUNBUFFERED 1
 
 # Устанавливаем рабочую директорию внутри контейнера
 WORKDIR /app
-ENV PATH="${PATH}:/root/.local/bin" \
-    POETRY_VIRTUALENVS_CREATE=False \
-    PYTHONPATH="${PYTHONPATH}:/opt:/opt/src"
 
 # Устанавливаем зависимости poetry
 RUN curl -sSL https://install.python-poetry.org | python -
 COPY poetry.lock pyproject.toml /app/
+
+ENV PATH="${PATH}:/root/.local/bin" \
+    POETRY_VIRTUALENVS_CREATE=False \
+    PYTHONPATH="${PYTHONPATH}:/opt:/opt/src"
 
 RUN poetry install
 
