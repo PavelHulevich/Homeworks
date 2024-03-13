@@ -1,0 +1,12 @@
+{% extends "base2.html" %}
+
+{% block heading %}
+  {{block.super}}
+  <h2>The stuff users</h2>
+{% endblock heading %}
+
+{% block content %}
+  <p>
+    {% include "index.txt" %}
+  </p>
+{% endblock content %}

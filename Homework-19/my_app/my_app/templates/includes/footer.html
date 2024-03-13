@@ -1,0 +1,24 @@
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>Оставлись вопросы? Свяжитесь с нами</h2>
+            <form method="post" action="{% url 'users:feedback_processing'%}">
+                {% csrf_token %}
+                <div class="fields">
+                    <div class="field half">
+                        <input type="text" name="feedback_name" id="feedback_name" placeholder="Имя" />
+                    </div>
+                    <div class="field half">
+                        <input type="email" name="feedback_email" id="feedback_email" placeholder="Почта" />
+                    </div>
+                    <div class="field">
+                        <textarea name="feedback_message" id="feedback_message" placeholder="Сообщение"></textarea>
+                    </div>
+                </div>
+                <ul class="actions">
+                    <li><input type="submit" value="Отправить" class="primary" /></li>
+                </ul>
+            </form>
+        </section>
+    </div>
+</footer>

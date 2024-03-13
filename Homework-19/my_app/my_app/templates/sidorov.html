@@ -1,0 +1,29 @@
+{% extends "base2.html" %}
+ 
+ {% block content %}
+   <p>
+     {{user_name}} {{user_surname}} was born in {{year}}. {% if male %} He is a man {% else %} She is a woman {% endif %}.
+   </p>
+ 
+  <p>
+    {% if eye_color %}
+      {{eye_color}}
+    {% endif %}
+  </p>
+
+  <p>
+    {% if Additional_info %}
+      Additional information
+    {% endif %}
+  </p>
+
+  <p>
+    {% if salary_gross > salary_net %}
+      Taxes are huge
+    {% elif salary_gross == salary_net %}
+      Good Taxes
+    {% else %}
+      What!?
+    {% endif %}
+  </p>
+{% endblock content %}

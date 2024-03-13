@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Cтатья </h1>
+    <h2>{{ article.name }}</h2>
+    <div>{{ article.body|slice:":200" }}</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base2.html" %}
+
+{% block content %}
+    <!-- sdfjsdjfsdjf -->
+    
+    {% comment %}
+    Nothing to see here!
+    {% endcomment %}
+    
+    {% autoescape off %}
+        {{ content }}
+    {% endautoescape %}
+
+    <pre>
+    {% autoescape on %}
+        Escaped: {{ my_text }}
+    {% endautoescape %}
+    {% autoescape off %}
+        Not Escaped: {{ my_text }}
+    {% endautoescape %}
+    </pre>
+
+    <p>Copyright 2012-{% now "Y" %}</p>
+
+<a href="{% url 'users:sidorov' %}">SIDOROV</a>
+
+<a href="{% url 'users:order_info' 42 101 %}">ORDER</a>
+    
+  <h2> Movies</h2>
+<p>{{movies|length}} movie{{movies|length|pluralize:"y,ies"}} found.</p>
+  <ul>
+    {% for movie in movies %}
+        #{{forloop.counter}} {{movie.0}} was released in {{movie.1|timesince}}
+      <li class="{% cycle 'row1' 'row2' %}">
+      #{{forloop.counter}} {{movie.0|upper}} was released in {{movie.1|center:"16"}}
+      <pre>{{movie.0}} becomes *{{ movie.0|center:"16" }}*</pre>
+        <pre>*{{movie.0}}* becomes *{{ movie.0|cut:" " }}*</pre>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <h2> Goodies </h2>
+{{ goodies|first }}
+{{ goodies|last }}
+{{ goodies|join:", " }}
+
+  <ul>
+    {% for goodie in confectionaries %}
+      <li> {{goodie.0}} &mdash; ${{goodie.1}}</li>
+    {% empty %}
+      <li> <i>There are no goodies available</i> </li>
+    {% endfor %}
+  </ul>
+{% endblock content %}
