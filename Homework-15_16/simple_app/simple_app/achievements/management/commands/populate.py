@@ -45,7 +45,7 @@ class Command(BaseCommand):
             player_id = random.choice(Players.objects.all())
             vehicle_id = random.choice(Tanks.objects.all())
             experience_points = fake.random_int(50, 2000)
-            PlayerVehicles.objects.create(player_id=player_id, vehicle_id=vehicle_id, experience_points=experience_points)
+            PlayerVehicles.objects.crate(player_id=player_id, vehicle_id=vehicle_id, experience_points=experience_points)
 
 
     def generate_achievements(self, num_achievements=20) -> None:

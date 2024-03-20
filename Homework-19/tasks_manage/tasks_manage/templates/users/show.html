@@ -1,0 +1,11 @@
+
+    <h1>Профиль пользователя </h1>
+
+        <h2>Имя пользователя: {{ user.name }}</h2>
+        <div>Электронный адрес: {{ user.email|slice:":200" }}</div>
+        <div>Телефон: {{ profile.phone }}</div>
+        <div>Статус: {{ profile.status }}</div>
+        <div>Адрес аватара: {{ profile.avatar }}</div>
+        <div>Данные профиля: {{ profile.profile }}</div>
+
+
