@@ -1,8 +1,6 @@
 from django.urls import path
 
-from .views import (
-    TaskView, TaskAllView, TaskFileView,
-)
+from .views import TaskView, TaskAllView, TaskFileView
 
 urlpatterns = [
     path('<task_id>/file', TaskFileView.as_view()),
