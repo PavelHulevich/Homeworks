@@ -1,4 +1,4 @@
-    <h1>Удалить задачу</h1>
-    <form action="{% url 'TaskDelete' %}" method="delete">
+    <h1>Удалить задачу: {{ task_id }}</h1>
+    <form action="{% url 'tasks:TaskView' task_id=task_id %}" method="get">
 
     </form>
