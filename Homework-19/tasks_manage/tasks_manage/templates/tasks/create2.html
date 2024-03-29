@@ -1,0 +1,8 @@
+    <h1>Создать статью</h1>
+    <form action="{% url 'tasks_create' %}" method="post">
+        {% csrf_token %}
+        <table border="1">
+        {{ form }}
+        </table>
+        <input type="submit" value="Создать">
+    </form>
