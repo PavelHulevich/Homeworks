@@ -28,6 +28,20 @@ class TaskFormCreateView(View):
         return render(request, 'tasks/create2.html', {'form': form})
 
 
+class TaskFormDeleteView(View):
+    def get(self, request,  *args, **kwargs):
+        task_id = kwargs.get('task_id')
+        task = Tasks.objects.get(id=task_id)
+        return render(request, 'tasks/task_del.html',
+                      {'task': task})
+
+    def delete(self, request, *args, **kwargs):
+        task = kwargs.get('task')
+        if task:
+            task.delete()
+        return redirect('TaskAllView')
+
+
 class TaskView(View):
     def get(self, request, *args, **kwargs):
         tasks_id = kwargs.get('task_id')
@@ -54,14 +68,7 @@ class TaskFileView(View):
         })
 
 
-# class TaskDelete(DeleteView):
-#     model = Tasks
-#     success_url = reverse_lazy('TaskAllView')
+class TaskDelete(DeleteView):
+    model = Tasks
+    success_url = reverse_lazy('TaskDelete')
 
-class TaskFormDeleteView(View):
-    def delete(self, request, *args, **kwargs):
-        task_id = kwargs.get('task_id')
-        task = Tasks.objects.get(id=task_id)
-        if task:
-            task.delete()
-        return redirect('TaskAllView')
