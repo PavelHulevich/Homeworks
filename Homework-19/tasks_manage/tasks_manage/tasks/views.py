@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DeleteView
 
 from .forms import TaskForm
 from .models import Tasks
@@ -21,7 +21,7 @@ class TaskFormCreateView(View):
                       {'form': form})
 
     def post(self, request, *args, **kwargs):
-        form = TaskForm(request.POST)
+        form = TaskForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('TaskAllView')
@@ -39,7 +39,7 @@ class TaskView(View):
 
 class TaskAllView(View):
     def get(self, request, *args, **kwargs):
-        tasks = Tasks.objects.all()[:15]
+        tasks = Tasks.objects.all()[:35]
         return render(request, 'tasks/show_all.html', context={
             'tasks': tasks,
         })
@@ -52,3 +52,16 @@ class TaskFileView(View):
         return render(request, 'tasks/show_file.html', context={
             'task': task,
         })
+
+
+# class TaskDelete(DeleteView):
+#     model = Tasks
+#     success_url = reverse_lazy('TaskAllView')
+
+class TaskFormDeleteView(View):
+    def delete(self, request, *args, **kwargs):
+        task_id = kwargs.get('task_id')
+        task = Tasks.objects.get(id=task_id)
+        if task:
+            task.delete()
+        return redirect('TaskAllView')

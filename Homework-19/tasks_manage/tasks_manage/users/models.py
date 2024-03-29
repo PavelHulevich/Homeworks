@@ -16,7 +16,7 @@ class Users(models.Model):
     name = models.CharField(max_length=35, unique=True)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=20)
-    profile = models.OneToOneField(Profiles, unique=True, on_delete=models.CASCADE)
+    fk_user_profile = models.OneToOneField(Profiles, unique=True, on_delete=models.CASCADE)
 
 
 class UsersTasks(models.Model):
