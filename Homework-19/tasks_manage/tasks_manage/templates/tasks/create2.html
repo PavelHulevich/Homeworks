@@ -1,5 +1,5 @@
-    <h1>Создать статью</h1>
-    <form action="{% url 'tasks_create' %}" method="post"
+    <h1>Создать задачу</h1>
+    <form action="{% url 'tasks:tasks_create' %}" method="post"
         enctype="multipart/form-data">
         {% csrf_token %}
         <table border="1">

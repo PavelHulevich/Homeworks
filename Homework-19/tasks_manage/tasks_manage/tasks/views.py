@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import CreateView, DeleteView
+from django.views.generic import DeleteView
 
 from .forms import TaskForm
 from .models import Tasks
@@ -70,7 +70,7 @@ class TaskFileView(View):
         })
 
 
-# class TaskDelete(DeleteView):
-#     model = Tasks
-#     success_url = reverse_lazy('TaskDelete')
+class TaskDelete(DeleteView):
+    model = Tasks
+    success_url = reverse_lazy('TaskDelete')
 
