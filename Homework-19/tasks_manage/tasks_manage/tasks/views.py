@@ -41,7 +41,7 @@ class TaskDeleteView(View):
         task = Tasks.objects.get(pk=task_id)
         if task:
             task.delete()
-        return redirect('TaskAllView')
+        return redirect('tasks:TaskAllView')
 
 
 class TaskView(View):
