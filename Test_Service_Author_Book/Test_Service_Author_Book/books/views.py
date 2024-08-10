@@ -46,3 +46,11 @@ class BookFormDeleteView(View):
         if book:
             book.delete()
         return redirect('/books')
+
+
+class BookAllFormDeleteView(View):
+    def post(self, request, *args, **kwargs):
+        book = Book.objects.all()
+        if book:
+            book.delete()
+        return redirect('/books')

@@ -10,6 +10,10 @@
     <form action="{% url 'author:author_create' %}">
         <input type="submit" value="Добавить автора">
     </form>
+    <form action="{% url 'author:author_all_del' %}"  method="post">
+        {% csrf_token %}
+        <input type="submit" value="Удалить всех авторов">
+    </form>
     <form action="{% url 'index:index_view' %}">
         <input type="submit" value="На главную страницу">
     </form>

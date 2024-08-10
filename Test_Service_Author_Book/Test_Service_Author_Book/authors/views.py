@@ -43,3 +43,11 @@ class AuthorFormDeleteView(View):
         if author:
             author.delete()
         return redirect('/authors')
+
+
+class AuthorAllFormDeleteView(View):
+    def post(self, request, *args, **kwargs):
+        author = Author.objects.all()
+        if author:
+            author.delete()
+        return redirect('/authors')
