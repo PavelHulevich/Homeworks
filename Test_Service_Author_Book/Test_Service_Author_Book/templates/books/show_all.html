@@ -1,0 +1,14 @@
+    <h1>Список книг </h1>
+
+        {% for book in books %}
+            <h2>Название книги: {{ book.title }}</h2>
+            <div>Идентификатор книги: {{  book.id  }}</div>
+            <div>Идентификатор автора: {{  book.fk_book_to_author  }}</div>
+            <form action="{% url 'book:book_del' book.id %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Удалить">
+            </form>
+        {% endfor %}
+    <form action="{% url 'book:book_create' %}">
+        <input type="submit" value="Добавить">
+    </form>

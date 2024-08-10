@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 
+from authors.models import Author
 from .forms import BookForm
 from .models import Book
 
@@ -12,7 +13,7 @@ class BookFormCreateView(View):    # добавление автора в БД
                       {'form': form})
 
     def post(self, request, *args, **kwargs):
-        form = BookForm(request.POST, request.FILES)
+        form = BookForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('/books')
@@ -31,8 +32,10 @@ class BookView(View):  # просмотр автора из БД по id
     def get(self, request, *args, **kwargs):
         book_id = kwargs.get('book_id')
         book = Book.objects.get(pk=book_id)
+        author = Author.objects.get(pk=book.fk_book_to_author)
         return render(request, 'books/show.html', context={
             'book': book,
+            'author': author,
         })
 
 

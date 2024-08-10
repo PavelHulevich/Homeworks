@@ -40,8 +40,6 @@ INSTALLED_APPS = [
     'hello',
     'authors',
     'books',
-    'tasks',
-    'users',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
