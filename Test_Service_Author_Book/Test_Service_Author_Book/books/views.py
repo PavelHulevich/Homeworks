@@ -24,17 +24,19 @@ class BookFormEditView(View):
     def get(self, request, *args, **kwargs):
         book_id = kwargs.get('id')
         book = Book.objects.get(id=book_id)
+        book2 = Book.objects.get(pk=book_id)
         form = BookForm(instance=book)
-        return render(request, 'books/update.html', {'form': form, 'book_id': book_id})
+        return render(request, 'books/update.html', {'form': form, 'book2': book2, 'book_id': book_id})
 
     def post(self, request, *args, **kwargs):
         book_id = kwargs.get('id')
         book = Book.objects.get(id=book_id)
+        book2 = Book.objects.get(pk=book_id)
         form = BookForm(request.POST, instance=book)
         if form.is_valid():
             form.save()
             return redirect('/books')
-        return render(request, 'books/update.html', {'form': form, 'book_id': book_id})
+        return render(request, 'books/update.html', {'form': form, 'book2': book2,'book_id': book_id})
 
 
 class BookAllView(View):  # просмотр всех авторов из БД
@@ -49,10 +51,8 @@ class BookView(View):  # просмотр автора из БД по id
     def get(self, request, *args, **kwargs):
         book_id = kwargs.get('book_id')
         book = Book.objects.get(pk=book_id)
-        # book = book.fk_book_to_book.name
         return render(request, 'books/show.html', context={
             'book': book,
-            'book': book.fk_book_to_book.name,
         })
 
 
