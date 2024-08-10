@@ -1,0 +1,8 @@
+    <h1>Список задач </h1>
+        {% for task in tasks %}
+            <h2>Название задачи: {{ task.name }}</h2>
+            <div>Описание задачи: {{ task.description }}</div>
+            <div>Статус: {{ task.status }}</div>
+            <div>Дата и время создания задачи: {{ task.date_of_create }}</div>
+            <div>Дедлайн: {{ task.deadline }}</div>
+        {% endfor %}

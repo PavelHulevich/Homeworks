@@ -1,0 +1,45 @@
+from django.shortcuts import render, redirect
+from django.views import View
+
+from .forms import BookForm
+from .models import Book
+
+
+class BookFormCreateView(View):    # добавление автора в БД
+    def get(self, request,  *args, **kwargs):
+        form = BookForm()
+        return render(request, 'books/create2.html',
+                      {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = BookForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('/books')
+        return render(request, 'books/create2.html', {'form': form})
+
+
+class BookAllView(View):  # просмотр всех авторов из БД
+    def get(self, request, *args, **kwargs):
+        books = Book.objects.all()[:35]
+        return render(request, 'books/show_all.html', context={
+            'books': books,
+        })
+
+
+class BookView(View):  # просмотр автора из БД по id
+    def get(self, request, *args, **kwargs):
+        book_id = kwargs.get('book_id')
+        book = Book.objects.get(pk=book_id)
+        return render(request, 'books/show.html', context={
+            'book': book,
+        })
+
+
+class BookFormDeleteView(View):
+    def post(self, request, *args, **kwargs):
+        book_id = kwargs.get('book_id')
+        book = Book.objects.get(id=book_id)
+        if book:
+            book.delete()
+        return redirect('/books')

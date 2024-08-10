@@ -1,0 +1,9 @@
+    <h1>Список Авторов </h1>
+        {% for author in authors %}
+            <h2>Имя Автора: {{ author.name }}</h2>
+            <div>Идентификатор автора: {{  author.id  }}</div>
+            <form action="{% url 'author:author_del' author.id %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Удалить">
+            </form>
+        {% endfor %}
