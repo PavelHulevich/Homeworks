@@ -2,7 +2,7 @@
     <form action="{% url 'book:book_create' %}" method="post"
         enctype="multipart/form-data">
         {% csrf_token %}
-        <table border="1">
+        <table border="3">
         {{ form }}
         </table>
         <input type="submit" value="Добавить">

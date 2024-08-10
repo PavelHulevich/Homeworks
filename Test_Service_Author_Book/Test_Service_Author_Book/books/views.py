@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 
-from authors.models import Author
+from books.models import Book
 from .forms import BookForm
 from .models import Book
 
@@ -20,6 +20,23 @@ class BookFormCreateView(View):    # добавление автора в БД
         return render(request, 'books/create2.html', {'form': form})
 
 
+class BookFormEditView(View):
+    def get(self, request, *args, **kwargs):
+        book_id = kwargs.get('id')
+        book = Book.objects.get(id=book_id)
+        form = BookForm(instance=book)
+        return render(request, 'books/update.html', {'form': form, 'book_id': book_id})
+
+    def post(self, request, *args, **kwargs):
+        book_id = kwargs.get('id')
+        book = Book.objects.get(id=book_id)
+        form = BookForm(request.POST, instance=book)
+        if form.is_valid():
+            form.save()
+            return redirect('/books')
+        return render(request, 'books/update.html', {'form': form, 'book_id': book_id})
+
+
 class BookAllView(View):  # просмотр всех авторов из БД
     def get(self, request, *args, **kwargs):
         books = Book.objects.all()[:35]
@@ -32,10 +49,10 @@ class BookView(View):  # просмотр автора из БД по id
     def get(self, request, *args, **kwargs):
         book_id = kwargs.get('book_id')
         book = Book.objects.get(pk=book_id)
-        author = Author.objects.get(pk=book.fk_book_to_author)
+        # book = book.fk_book_to_book.name
         return render(request, 'books/show.html', context={
             'book': book,
-            'author': author,
+            'book': book.fk_book_to_book.name,
         })
 
 

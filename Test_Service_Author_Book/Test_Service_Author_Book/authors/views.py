@@ -12,11 +12,28 @@ class AuthorFormCreateView(View):    # добавление автора в БД
                       {'form': form})
 
     def post(self, request, *args, **kwargs):
-        form = AuthorForm(request.POST, request.FILES)
+        form = AuthorForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('/authors')
         return render(request, 'authors/create2.html', {'form': form})
+
+
+class AuthorFormEditView(View):
+    def get(self, request, *args, **kwargs):
+        author_id = kwargs.get('id')
+        author = Author.objects.get(id=author_id)
+        form = AuthorForm(instance=author)
+        return render(request, 'authors/update.html', {'form': form, 'author_id':author_id})
+
+    def post(self, request, *args, **kwargs):
+        author_id = kwargs.get('id')
+        author = Author.objects.get(id=author_id)
+        form = AuthorForm(request.POST, instance=author)
+        if form.is_valid():
+            form.save()
+            return redirect('/authors')
+        return render(request, 'authors/update.html', {'form': form, 'author_id': author_id})
 
 
 class AuthorAllView(View):  # просмотр всех авторов из БД
