@@ -10,5 +10,8 @@
             </form>
         {% endfor %}
     <form action="{% url 'book:book_create' %}">
-        <input type="submit" value="Добавить">
+        <input type="submit" value="Добавить книгу">
+    </form>
+    <form action="{% url 'index:index_view' %}">
+        <input type="submit" value="На главную страницу">
     </form>
