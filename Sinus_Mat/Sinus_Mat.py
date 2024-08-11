@@ -1,5 +1,5 @@
 import time
-from tkinter import Canvas, Tk, PhotoImage, CENTER
+from Г import Canvas, Tk, PhotoImage, CENTER
 from random import randint
 from math import sin, pi
 
@@ -52,3 +52,4 @@ for _ in range(5):
 
 end = time.time()
 print(end - start)
+
