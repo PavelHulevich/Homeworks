@@ -67,14 +67,13 @@ class BookFormFindAuthorView(View):  # поиск книги по автору �
     def get(self, request):
         find_author = request.GET.get('find_text', "Имя автора")
         author = Author.objects.get(name=find_author)
-        print(find_author, author.id)
         books = Book.objects.filter(fk_book_to_author=author.id)
         return render(request, 'books/show_all_find_author.html', context={
             'books': books, 'author_name': find_author
         })
 
 
-class BookFormFindBookView(View):  # поиск книги по автору в БД
+class BookFormFindBookView(View):  # поиск книги по названию в БД
     def get(self, request):
         find_book = request.GET.get('find_text', "Название книги")
         books = Book.objects.filter(title=find_book)
