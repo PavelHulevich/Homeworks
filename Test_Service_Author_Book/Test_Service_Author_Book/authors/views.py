@@ -78,7 +78,7 @@ class AuthorFormDeleteView(View):  # Удаление автора из БД п�
 
 
 class AuthorAllFormDeleteView(View):  # Удаление всех авторов из БД.
-    def post(self):
+    def post(self, *args, **kwargs):
         author = Author.objects.all()
         if author:
             author.delete()

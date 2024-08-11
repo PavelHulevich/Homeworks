@@ -93,7 +93,7 @@ class BookFormDeleteView(View):  # удаление книги по ID
 
 
 class BookAllFormDeleteView(View):  # удаление всех книг в БД
-    def post(self):
+    def post(self, *args, **kwargs):
         book = Book.objects.all()
         if book:
             book.delete()
