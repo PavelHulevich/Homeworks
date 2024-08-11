@@ -7,7 +7,7 @@ app_name = 'author'
 
 urlpatterns = [
     path('create/', AuthorFormCreateView.as_view(), name='author_create'),  # добавление автора в БД
-    path('edit/<int:id>/', AuthorFormEditView.as_view(), name='author_update'),  # редактирование автора в БД
+    path('edit/<int:id>/', AuthorFormEditView.as_view(), name='author_update'),  # редактирование автора в БД по ID
     path('find/<int:id>/', AuthorFormFindBookView.as_view(), name='author_find_book'),  # поиск всех книг автора в БД
     path('<author_id>/', AuthorView.as_view(), name='AuthorView'),  # просмотр автора из БД по id
     path('del/all/', AuthorAllFormDeleteView.as_view(), name='author_all_del'),  # удаление всех авторов из БД

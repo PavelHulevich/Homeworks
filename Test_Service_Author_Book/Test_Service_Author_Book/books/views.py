@@ -1,9 +1,7 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
 
 from authors.models import Author
-from books.models import Book
 from .forms import BookForm
 from .models import Book
 
@@ -38,7 +36,8 @@ class BookFormEditView(View):  # редактирование записи с к
         if form.is_valid():
             form.save()
             return redirect('/books')
-        return render(request, 'books/update.html', {'form': form, 'book2': book2,'book_id': book_id})
+        return render(request, 'books/update.html',
+                      {'form': form, 'book2': book2, 'book_id': book_id})
 
 
 class BookAllView(View):  # просмотр всех книг из БД
@@ -85,7 +84,7 @@ class BookFormFindBookView(View):  # поиск книги по автору в 
 
 
 class BookFormDeleteView(View):  # удаление книги по ID
-    def post(self, request, *args, **kwargs):
+    def post(self, *args, **kwargs):
         book_id = kwargs.get('book_id')
         book = Book.objects.get(id=book_id)
         if book:

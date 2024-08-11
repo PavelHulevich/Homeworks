@@ -3,7 +3,5 @@ from django.views import View
 
 
 class IndexView(View):
-    def get(self, request,  *args, **kwargs):
+    def get(self, request):
         return render(request, 'index/index.html')
-
-
