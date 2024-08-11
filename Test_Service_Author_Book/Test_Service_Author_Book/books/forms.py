@@ -3,8 +3,6 @@ from .models import Book
 
 
 class BookForm(ModelForm):
-
     class Meta:
         model = Book
         fields = ['title', 'fk_book_to_author']
-

@@ -1,18 +1,20 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
 
+from authors.models import Author
 from books.models import Book
 from .forms import BookForm
 from .models import Book
 
 
-class BookFormCreateView(View):    # добавление автора в БД
-    def get(self, request,  *args, **kwargs):
+class BookFormCreateView(View):    # добавление книги в БД
+    def get(self, request):
         form = BookForm()
         return render(request, 'books/create2.html',
                       {'form': form})
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         form = BookForm(request.POST)
         if form.is_valid():
             form.save()
@@ -20,7 +22,7 @@ class BookFormCreateView(View):    # добавление автора в БД
         return render(request, 'books/create2.html', {'form': form})
 
 
-class BookFormEditView(View):
+class BookFormEditView(View):  # редактирование записи с книгой в БД
     def get(self, request, *args, **kwargs):
         book_id = kwargs.get('id')
         book = Book.objects.get(id=book_id)
@@ -39,15 +41,13 @@ class BookFormEditView(View):
         return render(request, 'books/update.html', {'form': form, 'book2': book2,'book_id': book_id})
 
 
-class BookAllView(View):  # просмотр всех авторов из БД
-    def get(self, request, *args, **kwargs):
+class BookAllView(View):  # просмотр всех книг из БД
+    def get(self, request):
         books = Book.objects.all()[:35]
-        return render(request, 'books/show_all.html', context={
-            'books': books,
-        })
+        return render(request, 'books/show_all.html', {'books': books})
 
 
-class BookView(View):  # просмотр автора из БД по id
+class BookView(View):  # просмотр книги из БД по id
     def get(self, request, *args, **kwargs):
         book_id = kwargs.get('book_id')
         book = Book.objects.get(pk=book_id)
@@ -56,7 +56,35 @@ class BookView(View):  # просмотр автора из БД по id
         })
 
 
-class BookFormDeleteView(View):
+class BookFormFindView(View):  # поиск книги в БД
+    def get(self, request):
+        books = Book.objects.all()
+        return render(request, 'books/find.html', context={
+            'books': books,
+        })
+
+
+class BookFormFindAuthorView(View):  # поиск книги по автору в БД
+    def get(self, request):
+        find_author = request.GET.get('find_text', "Имя автора")
+        author = Author.objects.get(name=find_author)
+        print(find_author, author.id)
+        books = Book.objects.filter(fk_book_to_author=author.id)
+        return render(request, 'books/show_all_find_author.html', context={
+            'books': books, 'author_name': find_author
+        })
+
+
+class BookFormFindBookView(View):  # поиск книги по автору в БД
+    def get(self, request):
+        find_book = request.GET.get('find_text', "Название книги")
+        books = Book.objects.filter(title=find_book)
+        return render(request, 'books/show_all.html', context={
+            'books': books,
+        })
+
+
+class BookFormDeleteView(View):  # удаление книги по ID
     def post(self, request, *args, **kwargs):
         book_id = kwargs.get('book_id')
         book = Book.objects.get(id=book_id)
@@ -65,8 +93,8 @@ class BookFormDeleteView(View):
         return redirect('/books')
 
 
-class BookAllFormDeleteView(View):
-    def post(self, request, *args, **kwargs):
+class BookAllFormDeleteView(View):  # удаление всех книг в БД
+    def post(self):
         book = Book.objects.all()
         if book:
             book.delete()
