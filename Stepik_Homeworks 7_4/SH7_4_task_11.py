@@ -1,12 +1,13 @@
 # Последовательность Фибоначчи 🌶️
 # Напишите программу, которая считывает натуральное число n и выводит первые n чисел последовательности Фибоначчи.
 
-n = int(input())
-curent_fib1 = 1
-curent_fib2 = 1
-for _ in range(n):
-    print(curent_fib1, end=' ')
-    curent_fib3 = curent_fib1 + curent_fib2
-    curent_fib1 = curent_fib2
-    curent_fib2 = curent_fib3
+# n = int(input())
+# curent_fib1 = 1
+# curent_fib2 = 1
+# for _ in range(n):
+#     print(curent_fib1, end=' ')
+#     curent_fib3 = curent_fib1 + curent_fib2
+#     curent_fib1 = curent_fib2
+#     curent_fib2 = curent_fib3
+
 
